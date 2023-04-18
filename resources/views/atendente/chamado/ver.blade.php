@@ -1,5 +1,4 @@
-<?php
-$respostas = json_decode($respostas, true); ?>
+<?php $respostas = json_decode($respostas, true);?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -56,7 +55,11 @@ $respostas = json_decode($respostas, true); ?>
                 <body style="overflow-y: scroll;">
                     <div class="d-flex column">
                         <div style="margin:20px">
-                            <h1>{{$respostas[0]['titulo']}}</h1>
+                            <?php
+                                if(array_count_values($respostas) > 1){
+                                    echo '<h1>'.$respostas[0]['titulo'].'</h1>';
+                                }
+                            ?>
                             <form action="/solicitante/chamado/ver" method="post">
                                 @csrf
                                 <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}">
@@ -79,19 +82,22 @@ $respostas = json_decode($respostas, true); ?>
                         </div>
 
                         <div class="d-flex column" style="margin:20px">
-                            @foreach ($respostas as $resposta)
-                            <div class="column">
-                                <div style="display: flex; flex-direction:row;">
-                                    <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
-                                    <b>{{$resposta['nome']}}</b>
-                                </div>
 
-                                <div class="text-left m-200px">
-                                    <?php echo $resposta['resposta'] ?>
-                                    <hr>
+                            @if($respostas != '[]')
+                                @foreach ($respostas as $resposta)
+                                <div class="column">
+                                    <div style="display: flex; flex-direction:row;">
+                                        <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
+                                        <b>{{$resposta['nome']}}</b>
+                                    </div>
+
+                                    <div class="text-left m-200px">
+                                        <?php echo $resposta['resposta'] ?>
+                                        <hr>
+                                    </div>
                                 </div>
-                            </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
                     </div>
 
@@ -110,6 +116,8 @@ $respostas = json_decode($respostas, true); ?>
                 </html>
             </div>
         </div>
+        <div>
+    
     </div>
 
     <style>
@@ -188,6 +196,8 @@ $respostas = json_decode($respostas, true); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    
+
 </body>
 
 </html>

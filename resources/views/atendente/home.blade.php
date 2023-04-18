@@ -13,10 +13,9 @@
 </head>
 
 <body>
-
     <div class="d-flex">
         <nav class="d-flex column bg-dark-green min-height-100vh" style="width: 200px">
-            <ul class="nav" style="list-style-type: none;">
+            <ul class="nav" style="display:flex; flex-direction:column;">
                 <li class="nav-item active">
                     <a href="/atendente/perfil/editar" class="nav-link" style="width:100%;">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -32,7 +31,7 @@
                 </li>
                 <br>
                 <li>
-                    <a href="/entrar" class="nav-link">
+                    <a href="/logout" class="nav-link">
                         <i class="person-16"></i>
                         <span>Sair</span>
                     </a>

@@ -18,7 +18,7 @@
 <body>
     <div class="d-flex" >
         <nav class="d-flex column bg-dark-green min-height-100vh" style="width: 200px">
-            <ul class="nav" style="list-style-type: none;">
+            <ul class="nav">
                 <li class="nav-item active">
                     <a href="/atendente/perfil/editar" class="nav-link" style="width:100%;">
                         <i class="fas fa-fw fa-tachometer-alt"></i>

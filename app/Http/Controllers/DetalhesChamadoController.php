@@ -31,7 +31,6 @@ class DetalhesChamadoController extends Controller
         return view('solicitante.chamado.ver',  [
             'respostas' => $respostas
         ]);
-
     }
 
     public function edit()

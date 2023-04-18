@@ -1,3 +1,5 @@
+<?php $usuarios = json_decode($usuarios, true); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,31 +10,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta http-equiv="refresh" content="5">
-    <!--CSS-->
-
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-
-
     <div class="d-flex">
         <nav class="d-flex column bg-dark-green min-height-100vh" style="width: 200px">
-            <ul class="nav" style="list-style-type: none;">
+            <ul>
                 <li class="nav-item active">
-                    <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
+                    <a href="/adm/perfil/editar" class="nav-link" style="width:100%;">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Meu perfil</span>
                     </a>
                 </li>
                 <br>
+                <li class="nav-item active">
+                    <a href="/adm/usuario" class="nav-link" style="width:100%;">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Usuário</span>
+                    </a>
+                    <ul>
+                       <a href="/adm/usuario/ver"><li>Ver</li></a> 
+                       <a href="/adm/usuario/criar"><li>Criar</li></a> 
+                    </ul>
+                </li>
+                <br>
                 <li>
-                    <a href="/solicitante" class="nav-link">
+                    <a href="/adm" class="nav-link">
                         <i class="person-16"></i>
                         <span>Chamados</span>
                     </a>
+
+                    <ul>
+                        <a href="/adm/usuario/ver">
+                            <li>Ver</li>
+                        </a>
+                        <a href="/adm/usuario/criar">
+                            <li>Criar</li>
+                        </a>
+                    </ul>
                 </li>
                 <br>
                 <li>
@@ -50,8 +66,8 @@
                 padding-top20px padding-bottom20px">
                     <input type="text" name="palavra" placeholder="Palavra chave..." class="form-control m-5px">
                     <select name="" class="form-control m-5px">
-                        <option value="">Código chamado</option>
-                        <option value="">Tipo chamado</option>
+                        <option value="">Código usuario</option>
+                        <option value="">Tipo usuario</option>
                     </select>
                     <input type="date" name="dataInicial" class="form-control
                     m-5px">
@@ -61,45 +77,33 @@
             </header>
 
             <div class="d-flex column" style="width:100%">
-                <ul id="scroll">
-                    <br>
-                    <br>
 
-                    @foreach ($chamados as $chamado)
-                        <div class="d-flex justify-between" style="justify-content: space-around;
+                @foreach ($usuarios as $usuario)
+                <div class="d-flex justify-between" style="justify-content: space-around;
                             align-items:center;">
-                            <div class="d-flex column">
-                                <b>@Gustavo Queiroz - {{$chamado['titulo']}}</b>
-                                <ul class="d-flex" style="padding:0px" class="list-style-none">
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>{{$chamado['tipo']}}</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>Suporte TI</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>{{$chamado['status']}}</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>4 Dias</span>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div class="d-flex column">
+                        <ul class="d-flex" style="padding:0px" class="list-style-none">
+                            <li style="margin-right:20px">
+                                <i>@ {{$usuario['username']}}</i>
+                            </li>
+                            <li style="margin-right:20px">
+                                <i>{{$usuario['name']}}</i>
+                            </li>
+                            <li style="margin-right:20px">
+                                <i>{{$usuario['email']}}</i>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <div>
-                                <a href="/solicitante/chamado/ver/{{$chamado['id']}}"><button>Informações</button></a>
-                            </div>
+                    <div style="display:flex">
+                        <a href="/adm/usuario/editar/1"><button>Editar</button></a>
+                        <a href="/adm/usuario/excluir/1"><button>Excluir</button></a>
+                    </div>
 
-                        </div>
-                        <br>
-                    @endforeach
+                </div>
+                <br>
+                @endforeach
 
-
-                </ul>
             </div>
         </div>
     </div>
@@ -115,8 +119,6 @@
             width: vmax;
             height: 45vmax;
             overflow-y: scroll;
-
-
         }
 
         .d-flex {

@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\LogMiddleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('autenticacao.entrar');
@@ -49,6 +52,7 @@ Route::get('/esqueciSenha', function () {
     return view('autenticacao.esqueciSenha');
 });
 Route::post('/esqueciSenha', [App\Http\Controllers\autenticacao\EsqueciSenhaController::class, 'enviarNovaSenhaNoEmail'])->name('esqueciSenha');
+
 Route::get('/login', function () {
     return view('autenticacao.entrar');
 });
@@ -99,12 +103,15 @@ Route::middleware(['auth', 'user-access:atendente'])->group(function () {
             Route::get('/ver', function () {
                 return view('atendente.chamado.ver');
             });
+            
             Route::get('/criar', function () {
                 return view('atendente.chamado.criar');
             });
             Route::get('/editar', function () {
                 return view('atendente.chamado.editar');
             });
+
+            Route::post('/criar', [App\Http\Controllers\atendente\ChamadoController::class, 'store']);
         });
 
         Route::prefix('perfil')->group(function () {
@@ -117,24 +124,28 @@ Route::middleware(['auth', 'user-access:atendente'])->group(function () {
 
 Route::middleware(['auth', 'user-access:administrador'])->group(function () {
     Route::prefix('adm')->group(function () {
-        Route::get('', function () {
+        /*Route::get('', function () {
             return view('adm.home');
-        });
+        });*/
+
+        Route::get('', [App\Http\Controllers\adm\ChamadoController::class, 'show']);
+
         Route::prefix('chamado')->group(function () {
-            Route::get('/ver', function () {
-                return view('adm.chamado.ver');
-            });
+            Route::get('/ver', [App\Http\Controllers\adm\ChamadoController::class, 'show']);
+            Route::get('/ver/{id}', [App\Http\Controllers\DetalhesChamadoController::class, 'show']);
+
+            /*modificar*/
             Route::get('/criar', function () {
-                return view('adm.chamado.ver');
+                return view('adm.chamado.criar');
             });
             Route::get('/editar', function () {
-                return view('adm.chamado.ver');
+                return view('adm.chamado.editar');
             });
             Route::get('/excluir', function () {
-                return view('adm.chamado.ver');
+                return view('adm.chamado.excluir');
             });
+            Route::post('/criar', [App\Http\Controllers\adm\ChamadoController::class, 'store']);
         });
-
 
         Route::prefix('gestao')->group(function () {
             Route::get('/ver', function () {
@@ -142,18 +153,30 @@ Route::middleware(['auth', 'user-access:administrador'])->group(function () {
             });
         });
 
-
         Route::prefix('perfil')->group(function () {
-            Route::get('/ver', function () {
-                return view('adm.perfil.ver');
-            });
-            Route::get('/editar', function () {
-                return view('adm.perfil.editar');
-            });
+            Route::get('/ver', [App\Http\Controllers\adm\PerfilController::class, 'show']);
+            Route::get('/editar', [App\Http\Controllers\adm\PerfilController::class, 'edit']);
+            Route::post('/editar', [App\Http\Controllers\adm\PerfilController::class, 'update']);
+        });
+
+        Route::prefix('usuario')->group(function () {
+            Route::get('', [App\Http\Controllers\adm\UsuarioController::class, 'show']);
+            Route::get('/ver', [App\Http\Controllers\adm\UsuarioController::class, 'show']);
+            Route::get('/criar', [App\Http\Controllers\adm\UsuarioController::class, 'create']);
+            Route::post('/criar', [App\Http\Controllers\adm\UsuarioController::class, 'store']);
+            Route::get('/editar/{}', [App\Http\Controllers\adm\UsuarioController::class, 'edit']);
+            Route::post('/editar/{}', [App\Http\Controllers\adm\UsuarioController::class, 'update']);
+            Route::post('/excluir/{}', [App\Http\Controllers\adm\UsuarioController::class, 'delete']);
         });
     });
 });
 
-Auth::routes();
 
+Route::get('logout', function (){
+    auth()->logout();
+    Session()->flush();
+    return Redirect::to('/entrar');
+})->name('logout');
+
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

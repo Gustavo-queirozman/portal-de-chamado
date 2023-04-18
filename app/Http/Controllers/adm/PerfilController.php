@@ -10,7 +10,6 @@ class PerfilController extends Controller
 {
     public function show()
     {
-        dd('aqui');
         //session_start();
         $idUsuario = 1;
         return view('adm.perfil.editar', [

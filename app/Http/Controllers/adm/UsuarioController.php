@@ -3,36 +3,33 @@
 namespace App\Http\Controllers\adm;
 
 use App\Http\Controllers\Controller;
-use App\Models\adm\Chamado;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ChamadoController extends Controller
+class UsuarioController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(){
 
     }
 
     public function show()
     {
-        $idUsuario = 1;
-        $chamado = new Chamado();
-        $chamados = $chamado->where('fkUsuario', $idUsuario)->get();
-
-        //$dados->fill($dados);
-        return view('adm.home',  [
-            'chamados' => $chamados
+        $usuarios = DB::table('users')->select('id', 'name', 'email', 'username')->get();
+        return view('adm.usuario.ver',  [
+            'usuarios' => $usuarios
         ]); 
     }
     
     public function create()
     {
-        return view('adm.chamado.criar');
+     
+        return view('adm.usuario.criar');
     }
 
     public function store(Request $request)
     {       
-        Chamado::create([
+        User::create([
             'tipo' => $request->input('tipo'),
             'categoria' => $request->input('categoria'),
             'prioridade' => $request->input('prioridade'),
@@ -44,22 +41,21 @@ class ChamadoController extends Controller
     }
 
 
-    public function edit($idChamado)
-    {
+    public function edit($idUsuario){
+        dd('dsdf');
         return view('adm.chamado.ver', [
-            'chamado' => Chamado::findOrFail($idChamado)
+            'chamado' => User::findOrFail($idUsuario)
         ]);
     }
 
     public function update(Request $request)
     {
         $idChamado = 1;
-        $chamado = Chamado::findOrFail($idChamado);
+        $chamado = User::findOrFail($idChamado);
         $chamado->tipo = $request->input('tipo');
         $chamado->update();
         return view('adm.chamado.editar',  [
-            'chamado' => Chamado::findOrFail($idChamado)
+            'chamado' => User::findOrFail($idChamado)
         ] );
     }
-
 }

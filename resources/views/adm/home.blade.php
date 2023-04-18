@@ -15,7 +15,7 @@
 
     <div class="d-flex">
         <nav class="d-flex column bg-dark-green min-height-100vh" style="width: 200px">
-            <ul class="nav" style="list-style-type: none;">
+            <ul>
                 <li class="nav-item active">
                     <a href="/adm/perfil/editar" class="nav-link" style="width:100%;">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -23,15 +23,35 @@
                     </a>
                 </li>
                 <br>
+                <li class="nav-item active">
+                    <a href="/adm/usuario" class="nav-link" style="width:100%;">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Usuário</span>
+                    </a>
+                    <ul>
+                       <a href="/adm/usuario/ver"><li>Ver</li></a> 
+                       <a href="/adm/usuario/criar"><li>Criar</li></a> 
+                    </ul>
+                </li>
+                <br>
                 <li>
                     <a href="/adm" class="nav-link">
                         <i class="person-16"></i>
                         <span>Chamados</span>
                     </a>
+
+                    <ul>
+                        <a href="/adm/chamado/ver">
+                            <li>Ver</li>
+                        </a>
+                        <a href="/adm/chamado/criar">
+                            <li>Criar</li>
+                        </a>
+                    </ul>
                 </li>
                 <br>
                 <li>
-                    <a href="/entrar" class="nav-link">
+                    <a href="/logout" class="nav-link">
                         <i class="person-16"></i>
                         <span>Sair</span>
                     </a>
@@ -56,42 +76,39 @@
             </header>
 
             <div class="d-flex column" style="width:100%">
-                <ul id="scroll">
-                    <br>
-                    <br>
-
-                    @foreach ($chamados as $chamado)
-                        <div class="d-flex justify-between" style="justify-content: space-around;
+                @foreach ($chamados as $chamado)
+                <div class="d-flex justify-between" style="justify-content: space-around;
                             align-items:center;">
-                            <div class="d-flex column">
-                                <b>@Gustavo Queiroz - {{$chamado['titulo']}}</b>
-                                <ul class="d-flex" style="padding:0px" class="list-style-none">
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>{{$chamado['tipo']}}</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>Suporte TI</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>{{$chamado['status']}}</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>4 Dias</span>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div class="d-flex column">
+                        <b>@Gustavo Queiroz - {{$chamado['titulo']}}</b>
+                        <ul class="d-flex" style="padding:0px" class="list-style-none">
+                            <li style="margin-right:20px">
+                                <i></i>
+                                <span>{{$chamado['tipo']}}</span>
+                            </li>
+                            <li style="margin-right:20px">
+                                <i></i>
+                                <span>Suporte TI</span>
+                            </li>
+                            <li style="margin-right:20px">
+                                <i></i>
+                                <span>{{$chamado['status']}}</span>
+                            </li>
+                            <li style="margin-right:20px">
+                                <i></i>
+                                <span>4 Dias</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <div>
-                                <a href="/adm/chamado/ver/{{$chamado['id']}}"><button>Informações</button></a>
-                            </div>
-                        </div>
-                        <br>
-                    @endforeach
-                </ul>
+                    <div>
+                        <a href="/adm/chamado/ver/{{$chamado['id']}}"><button>Informações</button></a>
+                    </div>
+
+                </div>
+                <br>
+                @endforeach
+
             </div>
         </div>
     </div>

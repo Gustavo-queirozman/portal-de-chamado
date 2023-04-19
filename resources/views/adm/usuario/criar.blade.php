@@ -8,7 +8,7 @@
     <title>Painel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta http-equiv="refresh" content="5">
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
@@ -77,20 +77,32 @@
 
             <div class="d-flex column" style="width:100%">
 
-                <form action="/adm/usuario" method="post">
+                <form action="/adm/usuario/criar" method="post">
+                    @csrf
                     <input type="text" name="name" placeholder="Nome">
                     <br>
-                    <input type="text" name="email" placeholder="E-mail">
+                    <input type="email" name="email" placeholder="E-mail">
                     <br>
                     <input type="text" name="username" placeholder="Usuário">
                     <br>
                     <input type="text" name="password" placeholder="Senha">
                     <br>
-                    <input type="text" name="setor" placeholder="Setor">
+                    <select name="setor">
+                        <option value="Atendimento">Atendimento</option>
+                        <option value="Atualização">Atualização</option>
+                        <option value="Cadastro">Cadastro</option>
+                        <option value="Diretoria">Diretoria</option>
+                        <option value="Faturamento">Faturamento</option>
+                        <option value="Financeiro">Financeiro</option>
+                        <option value="Gerencia">Gerencia</option>
+                        <option value="SAC">SAC</option>
+                        <option value="Suporte TI">Suporte TI</option>
+                        <option value="Vendas">Vendas</option>
+                    </select>
                     <br>
                     <input type="text" name="ramal" placeholder="Ramal">
                     <br>
-                    <input type="text" name="anyDesk" placeholder="Anydesk">
+                    <input type="text" name="codAnydesk" placeholder="Anydesk">
                     <br>
                     <input type="submit" value="Cadastrar">
                 </form>

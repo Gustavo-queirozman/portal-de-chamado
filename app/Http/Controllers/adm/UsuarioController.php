@@ -23,26 +23,33 @@ class UsuarioController extends Controller
     
     public function create()
     {
-     
         return view('adm.usuario.criar');
     }
 
     public function store(Request $request)
     {       
-        User::create([
-            'tipo' => $request->input('tipo'),
-            'categoria' => $request->input('categoria'),
-            'prioridade' => $request->input('prioridade'),
-            'titulo' => $request->input('titulo'),
-            'descricao' => $request->input('descricao')
-        ]);
 
-        return view('adm.home');
+        $usuario = new User;
+
+        $usuario->name = $request->input('name');
+        $usuario->username = $request->input('username');
+        $usuario->email = $request->input('email');
+        $usuario->password = $request->input('password');
+        $usuario->setor = $request->input('setor');
+        $usuario->ramal = $request->input('ramal');
+        $usuario->codAnydesk = $request->input('codAnydesk');
+        $usuario->type = $request->input('nivelPermissao');
+        $usuario->save();
+
+        $usuarios = User::all();
+        return view('adm/usuario/ver', [
+            'usuarios' => $usuarios
+        ]);
     }
 
 
     public function edit($idUsuario){
-        dd('dsdf');
+
         return view('adm.chamado.ver', [
             'chamado' => User::findOrFail($idUsuario)
         ]);

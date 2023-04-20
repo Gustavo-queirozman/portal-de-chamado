@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -45,6 +47,19 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('autenticacao.entrar');   
+        return view('autenticacao.entrar');
+    }
+
+    protected function authenticated($user)
+    {
+        $usuarioId = Auth::id();
+        $usuario = User::findOrFail($usuarioId);
+
+        if ($usuario['type'] == 'administrador') {
+            $usuario['type'] = 'adm';
+        }
+
+        $rota = "/" . $usuario['type'];
+        return redirect($rota);
     }
 }

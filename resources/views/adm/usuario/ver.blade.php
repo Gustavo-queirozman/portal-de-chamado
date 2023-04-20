@@ -64,15 +64,14 @@
         <header class="bg-dark-green">
                 <form action="" method="post" class="d-flex flex-center
                 padding-top20px padding-bottom20px">
-                    <input type="text" name="palavra" placeholder="Número do chamado..." class="form-control m-5px">
+                    <input type="text" name="palavraChave" placeholder="Pesquisar..." class="form-control m-5px">
                     <select name="tipoPesquisa" class="form-control m-5px">
-                        <option value="numeroChamado">Número do chamado</option>
-                        <option value="hardware">Hardware</option>
-                        <option value="software">Software</option>
+                        <option value="email">E-mail</option>
+                        <option value="usuario">Usuário</option>
+                        <option value="nome">Nome</option>
                     </select>
-                    <input type="date" name="dataInicial" class="form-control
+                    <input type="date" name="dataCriacao" class="form-control
                     m-5px">
-                    <input type="date" name="dataFinal" class="form-control m-5px">
                     <button type="submit" class="form-control m-5px">Pesquisar</button>
                 </form>
             </header>

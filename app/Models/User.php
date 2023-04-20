@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'username',
         'email',
+        'type',
         'password',
         'setor',
         'ramal',

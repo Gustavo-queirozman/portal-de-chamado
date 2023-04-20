@@ -65,4 +65,11 @@ class UsuarioController extends Controller
             'chamado' => User::findOrFail($idChamado)
         ] );
     }
+
+    public function delete($idUsuario){
+        $idUsuario = 1;
+        DB::table('users')
+        ->where('id', '=', $idUsuario)->delete();
+        return view('adm.usuario.ver');
+    }
 }

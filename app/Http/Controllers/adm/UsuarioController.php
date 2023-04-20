@@ -21,8 +21,7 @@ class UsuarioController extends Controller
         ]); 
     }
     
-    public function create()
-    {
+    public function create(){
         return view('adm.usuario.criar');
     }
 

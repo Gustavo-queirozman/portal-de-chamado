@@ -1,5 +1,4 @@
-<?php
-$respostas = json_decode($respostas, true); ?>
+<?php $respostas = json_decode($respostas, true);?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -55,35 +54,41 @@ $respostas = json_decode($respostas, true); ?>
 
                 <body style="overflow-y: scroll;">
                     <div class="d-flex column">
-                        <div style="margin:20px">
-                            <h1>{{$respostas[0]['titulo']}}</h1>
-                            <form action="/solicitante/chamado/ver" method="post">
-                                @csrf
-                                <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}">
-                                <div >
-                                    <textarea name="resposta" id="editor" placeholder="Responder.."></textarea>
-                                </div>
+                
+                        @if(!empty($respostas))
+                            <div style="margin:20px">
+                                <h1>{{$respostas[0]['titulo']}}</h1>
+                                <form action="/solicitante/chamado/ver" method="post">
+                                    @csrf
+                                    <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}">
+                                    <div >
+                                        <textarea name="resposta" id="editor" placeholder="Responder.."></textarea>
+                                    </div>
 
-                                <input type="submit" value="Enviar">
-                            </form>
-                            <br>
-                        </div>
-
-                        <div class="d-flex column" style="margin:20px">
-                            @foreach ($respostas as $resposta)
-                            <div class="column">
-                                <div style="display: flex; flex-direction:row;">
-                                    <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
-                                    <b>{{$resposta['nome']}}</b>
-                                </div>
-
-                                <div class="text-left m-200px">
-                                    <?php echo $resposta['resposta'] ?>
-                                    <hr>
-                                </div>
+                                    <input type="submit" value="Enviar">
+                                </form>
+                                <br>
                             </div>
-                            @endforeach
-                        </div>
+
+                            <div class="d-flex column" style="margin:20px">
+                                @foreach ($respostas as $resposta)
+                                <div class="column">
+                                    <div style="display: flex; flex-direction:row;">
+                                        <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
+                                        <b>{{$resposta['nome']}}</b>
+                                    </div>
+
+                                    <div class="text-left m-200px">
+                                        <?php echo $resposta['resposta'] ?>
+                                        <hr>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <h3 style="text-align: center;">Aguardando resposta...</h3>
+                        @endif
+                        
                     </div>
 
 

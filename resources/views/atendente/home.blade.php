@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -43,10 +42,11 @@
             <header class="bg-dark-green">
                 <form action="" method="post" class="d-flex flex-center
                 padding-top20px padding-bottom20px">
-                    <input type="text" name="palavra" placeholder="Palavra chave..." class="form-control m-5px">
-                    <select name="" class="form-control m-5px">
-                        <option value="">Código chamado</option>
-                        <option value="">Tipo chamado</option>
+                    <input type="text" name="palavra" placeholder="Número do chamado..." class="form-control m-5px">
+                    <select name="tipoPesquisa" class="form-control m-5px">
+                        <option value="numeroChamado">Número do chamado</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="software">Software</option>
                     </select>
                     <input type="date" name="dataInicial" class="form-control
                     m-5px">
@@ -61,36 +61,36 @@
                     <br>
 
                     @foreach ($chamados as $chamado)
-                        <div class="d-flex justify-between" style="justify-content: space-around;
+                    <div class="d-flex justify-between" style="justify-content: space-around;
                             align-items:center;">
-                            <div class="d-flex column">
-                                <b>@Gustavo Queiroz - {{$chamado['titulo']}}</b>
-                                <ul class="d-flex" style="padding:0px" class="list-style-none">
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>{{$chamado['tipo']}}</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>Suporte TI</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>{{$chamado['status']}}</span>
-                                    </li>
-                                    <li style="margin-right:20px">
-                                        <i></i>
-                                        <span>4 Dias</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <a href="/atendente/chamado/ver/{{$chamado['id']}}"><button>Informações</button></a>
-                            </div>
-
+                        <div class="d-flex column">
+                            <b>@Gustavo Queiroz - {{$chamado['titulo']}}</b>
+                            <ul class="d-flex" style="padding:0px" class="list-style-none">
+                                <li style="margin-right:20px">
+                                    <i></i>
+                                    <span>{{$chamado['tipo']}}</span>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <i></i>
+                                    <span>Suporte TI</span>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <i></i>
+                                    <span>{{$chamado['status']}}</span>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <i></i>
+                                    <span>4 Dias</span>
+                                </li>
+                            </ul>
                         </div>
-                        <br>
+
+                        <div>
+                            <a href="/atendente/chamado/ver/{{$chamado['id']}}"><button>Informações</button></a>
+                        </div>
+
+                    </div>
+                    <br>
                     @endforeach
 
 

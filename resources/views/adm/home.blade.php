@@ -63,10 +63,11 @@
             <header class="bg-dark-green">
                 <form action="" method="post" class="d-flex flex-center
                 padding-top20px padding-bottom20px">
-                    <input type="text" name="palavra" placeholder="Palavra chave..." class="form-control m-5px">
-                    <select name="" class="form-control m-5px">
-                        <option value="">Código chamado</option>
-                        <option value="">Tipo chamado</option>
+                    <input type="text" name="palavra" placeholder="Número do chamado..." class="form-control m-5px">
+                    <select name="tipoPesquisa" class="form-control m-5px">
+                        <option value="numeroChamado">Número do chamado</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="software">Software</option>
                     </select>
                     <input type="date" name="dataInicial" class="form-control
                     m-5px">

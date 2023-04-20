@@ -61,18 +61,7 @@
 
         <div style="width:100%">
             <header class="bg-dark-green">
-                <form action="" method="post" class="d-flex flex-center
-                padding-top20px padding-bottom20px">
-                    <input type="text" name="palavra" placeholder="Palavra chave..." class="form-control m-5px">
-                    <select name="" class="form-control m-5px">
-                        <option value="">Código usuario</option>
-                        <option value="">Tipo usuario</option>
-                    </select>
-                    <input type="date" name="dataInicial" class="form-control
-                    m-5px">
-                    <input type="date" name="dataFinal" class="form-control m-5px">
-                    <button type="submit" class="form-control m-5px">Pesquisar</button>
-                </form>
+                <br><br><br>
             </header>
 
             <div class="d-flex column" style="width:100%">

@@ -42,10 +42,10 @@
                     </a>
 
                     <ul>
-                        <a href="/adm/usuario/ver">
+                        <a href="/adm/chamado/ver">
                             <li>Ver</li>
                         </a>
-                        <a href="/adm/usuario/criar">
+                        <a href="/adm/chamado/criar">
                             <li>Criar</li>
                         </a>
                     </ul>
@@ -61,13 +61,14 @@
         </nav>
 
         <div style="width:100%">
-            <header class="bg-dark-green">
+        <header class="bg-dark-green">
                 <form action="" method="post" class="d-flex flex-center
                 padding-top20px padding-bottom20px">
-                    <input type="text" name="palavra" placeholder="Palavra chave..." class="form-control m-5px">
-                    <select name="" class="form-control m-5px">
-                        <option value="">Código usuario</option>
-                        <option value="">Tipo usuario</option>
+                    <input type="text" name="palavra" placeholder="Número do chamado..." class="form-control m-5px">
+                    <select name="tipoPesquisa" class="form-control m-5px">
+                        <option value="numeroChamado">Número do chamado</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="software">Software</option>
                     </select>
                     <input type="date" name="dataInicial" class="form-control
                     m-5px">

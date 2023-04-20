@@ -26,3 +26,22 @@ WHERE (tipo = @tipoChamado AND titulo = 'titulo' AND data BETWEEN '2023-01-01' A
     	OR (id = @codChamado AND data BETWEEN '2023-01-01' AND '2023-12-31')
     	OR (data BETWEEN '2023-01-01' AND '2023-12-31');
 
+
+IF()
+    SELECT  titulo, tipo, prioridade, descricao, status, atendente, data, criadoDataHora FROM chamado
+    WHERE tipo = @tipoChamado AND titulo = 'titulo' AND data BETWEEN '2023-01-01' AND '2023-12-31';
+END
+
+IF()
+    SELECT  titulo, tipo, prioridade, descricao, status, atendente, data, criadoDataHora FROM chamado
+    WHERE id = @codChamado AND data BETWEEN '2023-01-01' AND '2023-12-31';
+END
+
+IF()
+    SELECT  titulo, tipo, prioridade, descricao, status, atendente, data, criadoDataHora FROM chamado
+    WHERE data BETWEEN '2023-01-01' AND '2023-12-31';
+END
+
+
+
+

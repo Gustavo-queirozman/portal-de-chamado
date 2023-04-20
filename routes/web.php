@@ -130,6 +130,7 @@ Route::middleware(['auth', 'user-access:administrador'])->group(function () {
 
         Route::get('', [App\Http\Controllers\adm\ChamadoController::class, 'show']);
 
+
         Route::prefix('chamado')->group(function () {
             Route::get('/ver', [App\Http\Controllers\adm\ChamadoController::class, 'show']);
             Route::get('/ver/{id}', [App\Http\Controllers\DetalhesChamadoController::class, 'show']);
@@ -167,8 +168,9 @@ Route::middleware(['auth', 'user-access:administrador'])->group(function () {
             Route::get('/editar/{}', [App\Http\Controllers\adm\UsuarioController::class, 'edit']);
             Route::post('/editar/{id}', [App\Http\Controllers\adm\UsuarioController::class, 'update']);
             Route::get('/excluir/{id}', [App\Http\Controllers\adm\UsuarioController::class, 'delete']);
-          
         });
+
+        
     });
 });
 

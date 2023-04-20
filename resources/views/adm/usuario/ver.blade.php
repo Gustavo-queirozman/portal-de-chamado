@@ -99,11 +99,9 @@
                         <a href="/adm/usuario/editar/{{$usuario['id']}}"><button>Editar</button></a>
                         <a href="/adm/usuario/excluir/{{$usuario['id']}}"><button>Excluir</button></a>
                     </div>
-
                 </div>
                 <br>
                 @endforeach
-
             </div>
         </div>
     </div>

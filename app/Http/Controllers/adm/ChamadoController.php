@@ -10,7 +10,6 @@ class ChamadoController extends Controller
 {
     public function __construct()
     {
-
     }
 
     public function show()
@@ -22,16 +21,16 @@ class ChamadoController extends Controller
         //$dados->fill($dados);
         return view('adm.home',  [
             'chamados' => $chamados
-        ]); 
+        ]);
     }
-    
+
     public function create()
     {
         return view('adm.chamado.criar');
     }
 
     public function store(Request $request)
-    {       
+    {
         Chamado::create([
             'tipo' => $request->input('tipo'),
             'categoria' => $request->input('categoria'),
@@ -59,7 +58,40 @@ class ChamadoController extends Controller
         $chamado->update();
         return view('adm.chamado.editar',  [
             'chamado' => Chamado::findOrFail($idChamado)
-        ] );
+        ]);
     }
 
+    public function search(Request $request)
+    {
+
+        dd($request);
+        $tipo = 'codChamado'; //hardware ou software
+        $dataInicial = null;
+        $dataFinal = null;
+
+        if ($tipo == null) {
+            dd('campo obrigatório');
+        }
+
+        if ($tipo = 'codChamado' && $dataInicial != null && $dataFinal != null) {
+
+        }
+
+        if ($tipo = 'Hardware' && $dataInicial != null && $dataFinal != null) {
+
+        }
+
+        if ($tipo = 'Software' && $dataInicial != null && $dataFinal != null) {
+
+        }
+
+        if ($tipo = 'Hardware') {
+
+        }
+
+        if ($tipo = 'Software') {
+            
+        }
+
+    }
 }

@@ -1,6 +1,4 @@
 <?php
-
-dd($chamados);
 $chamados = json_decode($chamados, true);
 ?>
 

@@ -42,4 +42,6 @@ class PerfilController extends Controller
             'usuario' => Perfil::findOrFail($idUsuario)
         ] );
     }
+
+    
 }

@@ -61,7 +61,7 @@
 
         <div style="width:100%">
             <header class="bg-dark-green">
-                <form action="" method="post" class="d-flex flex-center
+                <form action="/search" method="post" class="d-flex flex-center
                 padding-top20px padding-bottom20px">
                     <input type="text" name="palavra" placeholder="Número do chamado..." class="form-control m-5px">
                     <select name="tipoPesquisa" class="form-control m-5px">

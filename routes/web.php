@@ -165,8 +165,9 @@ Route::middleware(['auth', 'user-access:administrador'])->group(function () {
             Route::get('/criar', [App\Http\Controllers\adm\UsuarioController::class, 'create']);
             Route::post('/criar', [App\Http\Controllers\adm\UsuarioController::class, 'store']);
             Route::get('/editar/{}', [App\Http\Controllers\adm\UsuarioController::class, 'edit']);
-            Route::post('/editar/{}', [App\Http\Controllers\adm\UsuarioController::class, 'update']);
-            Route::post('/excluir/{}', [App\Http\Controllers\adm\UsuarioController::class, 'delete']);
+            Route::post('/editar/{id}', [App\Http\Controllers\adm\UsuarioController::class, 'update']);
+            Route::get('/excluir/{id}', [App\Http\Controllers\adm\UsuarioController::class, 'delete']);
+          
         });
     });
 });

@@ -28,9 +28,7 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {       
-
         $usuario = new User;
-
         $usuario->name = $request->input('name');
         $usuario->username = $request->input('username');
         $usuario->email = $request->input('email');
@@ -66,10 +64,9 @@ class UsuarioController extends Controller
         ] );
     }
 
-    public function delete($idUsuario){
-        $idUsuario = 1;
-        DB::table('users')
-        ->where('id', '=', $idUsuario)->delete();
-        return view('adm.usuario.ver');
+    public function delete($id){
+    
+        User::where('id', $id)->delete();
+        return redirect('adm/usuario');
     }
 }

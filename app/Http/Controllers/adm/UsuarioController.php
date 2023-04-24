@@ -46,25 +46,29 @@ class UsuarioController extends Controller
 
 
     public function edit($idUsuario){
-
-        return view('adm.chamado.ver', [
-            'chamado' => User::findOrFail($idUsuario)
+        return view('adm.usuario.editar', [
+            'usuario' => User::findOrFail($idUsuario)
         ]);
     }
 
     public function update(Request $request)
     {
-        $idChamado = 1;
-        $chamado = User::findOrFail($idChamado);
-        $chamado->tipo = $request->input('tipo');
-        $chamado->update();
-        return view('adm.chamado.editar',  [
-            'chamado' => User::findOrFail($idChamado)
-        ] );
+        $usuario = User::findOrFail($request->input('id'));
+        $usuario->name = $request->input('name');
+        $usuario->email = $request->input('email');
+        $usuario->username = $request->input('username');
+        $usuario->type = $request->input('type');
+        $usuario->setor = $request->input('setor');
+        $usuario->ramal = $request->input('ramal');
+        $usuario->codAnydesk = $request->input('codAnydesk');
+        $usuario->save();
+        
+        return view('adm.usuario.editar',  [
+            'usuario' => User::findOrFail($request->input('id'))
+        ]);
     }
 
     public function delete($id){
-    
         User::where('id', $id)->delete();
         return redirect('adm/usuario');
     }

@@ -146,6 +146,7 @@ Route::middleware(['auth', 'user-access:administrador'])->group(function () {
                 return view('adm.chamado.excluir');
             });
             Route::post('/criar', [App\Http\Controllers\adm\ChamadoController::class, 'store']);
+            Route::post('/criar', [App\Http\Controllers\adm\ChamadoController::class, 'store']);
         });
 
         Route::prefix('gestao')->group(function () {
@@ -165,7 +166,7 @@ Route::middleware(['auth', 'user-access:administrador'])->group(function () {
             Route::get('/ver', [App\Http\Controllers\adm\UsuarioController::class, 'show']);
             Route::get('/criar', [App\Http\Controllers\adm\UsuarioController::class, 'create']);
             Route::post('/criar', [App\Http\Controllers\adm\UsuarioController::class, 'store']);
-            Route::get('/editar/{}', [App\Http\Controllers\adm\UsuarioController::class, 'edit']);
+            Route::get('/editar/{id}', [App\Http\Controllers\adm\UsuarioController::class, 'edit']);
             Route::post('/editar/{id}', [App\Http\Controllers\adm\UsuarioController::class, 'update']);
             Route::get('/excluir/{id}', [App\Http\Controllers\adm\UsuarioController::class, 'delete']);
         });

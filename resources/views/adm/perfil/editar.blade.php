@@ -7,16 +7,12 @@
     <title>Painel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <!--CSS-->
-
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="d-flex" >
+    <div class="d-flex">
         <nav class="d-flex column bg-dark-green min-height-100vh" style="width: 200px">
             <ul class="nav">
                 <li class="nav-item active">
@@ -44,7 +40,7 @@
 
         <div style="width:100%;">
             <header class="bg-dark-green">
-               <br><br><br>
+                <br><br><br>
             </header>
 
             <div class="d-flex column" style="width:100%">
@@ -72,7 +68,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="nome">Nome*</label>
-                                        <input type="text" class="form-control" name="name" value="{{$usuario['name']}}" id="name" required>
+                                        <input type="text" class="form-control" name="nome" value="{{$usuario['nome']}}" id="name" required>
                                     </div>
 
                                     <div class="form-group">
@@ -83,7 +79,7 @@
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label for="usuario">Usuário*</label>
-                                                <input type="text" class="form-control" name="username" id="usuario" value="{{$usuario['username']}}" required>
+                                                <input type="text" class="form-control" name="usuario" id="usuario" value="{{$usuario['usuario']}}" required>
                                             </div>
 
                                             <div class="col-md-4 mb-3">
@@ -129,6 +125,7 @@
                         </div>
                     </div>
                 </body>
+
                 </html>
             </div>
         </div>

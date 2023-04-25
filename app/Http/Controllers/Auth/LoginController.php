@@ -54,7 +54,7 @@ class LoginController extends Controller
     {
         $usuarioId = Auth::id();
         $usuario = User::findOrFail($usuarioId);
-
+        
         if ($usuario['type'] == 'administrador') {
             $usuario['type'] = 'adm';
         }

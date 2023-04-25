@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\solicitante\Perfil;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
 {
@@ -41,7 +41,7 @@ class PerfilController extends Controller
         $usuario->name = $request->input('name');
         $usuario->email = $request->input('email');
         $usuario->username = $request->input('username');
-        $usuario->password = $request->input('password');
+        $usuario->password = Hash::make($request->input('password'));
         $usuario->setor = $request->input('setor');
         $usuario->ramal = $request->input('ramal');
         $usuario->codAnydesk = $request->input('codAnydesk');

@@ -16,37 +16,36 @@
 </head>
 
 <body>
-
-
     <div class="d-flex" >
-        <nav class="d-flex column bg-dark-green min-height-100vh" style="width: 200px">
-            <ul class="nav" style="list-style-type: none;">
+        <nav class="d-flex column bg-dark-green min-height-100vh" style="width: auto; position:fixed;">
+            <ul style="list-style: none; padding:0px;">
+                <div>
+                    <br><br>
+                    <br><br>
+                </div>
                 <li class="nav-item active">
                     <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Meu perfil</span>
+                        <img src="../../img/perfil.png" alt="Perfil" style="width: 25px;">
                     </a>
                 </li>
                 <br>
                 <li>
                     <a href="/solicitante" class="nav-link">
-                        <i class="person-16"></i>
-                        <span>Chamados</span>
+                        <img src="../../img/chamado.png" alt="Chamados" style="width: 25px;">
                     </a>
                 </li>
                 <br>
                 <li>
-                    <a href="/entrar" class="nav-link">
-                        <i class="person-16"></i>
-                        <span>Sair</span>
+                    <a href="/logout" class="nav-link">
+                        <img src="../../img/sair.png" alt="Sair" style="width: 25px;">
                     </a>
                 </li>
             </ul>
         </nav>
 
         <div style="width:100%;">
-            <header class="bg-dark-green">
-                <br><br><br>
+            <header class="bg-dark-green" style="display:flex; background-color:white; box-shadow: 0 1px 25px rgba(0,0,0,.16); padding-left:70px;">
+               <br><br><br>
             </header>
 
             <div class="d-flex column" style="width:100%">
@@ -68,7 +67,7 @@
                     <br><br>
                     <div class="d-flex align-center justify-content-center ">
                         <div class="card w-75" style="border-radius:10px">
-                            <div class="card-header"><b>Atualizar perfil</b></div>
+                            <div class="card-header" style="font-size:20px; background-color: #00995D; color:white;"><b>Perfil</b></div>
                             <div class="card-body">
                                 <form action="/solicitante/perfil/editar" method="post">
                                     @csrf
@@ -138,17 +137,45 @@
         </div>
     </div>
 
+    
     <style>
+        label{
+            margin-bottom: 0px;
+        }
+        /* width */
+        ::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 20px;
+
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+        }
+        
         body {
             margin: 0px;
             padding: 0px;
             overflow-y: hidden;
         }
 
+        /*aqui*/
+
         #scroll {
             width: vmax;
-            height: 45vmax;
-            overflow-y: scroll;
+            height: 100vmax;
+            overflow-y: auto;
 
 
         }
@@ -174,7 +201,7 @@
         }
 
         .bg-dark-green {
-            background-color: #035F54;
+            background-color: #00995d;
         }
 
         .list-style-none {

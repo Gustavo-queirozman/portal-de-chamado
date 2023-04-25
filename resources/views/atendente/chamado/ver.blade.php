@@ -57,7 +57,7 @@
                         <div style="margin:20px">
                             <?php
                                 if(array_count_values($respostas) > 1){
-                                    echo '<h1>'.$respostas[0]['titulo'].'</h1>';
+                                    echo '<h3 style="font-size:12px;">'.$respostas[0]['titulo'].'</h3>';
                                 }
                             ?>
                             <form action="/solicitante/chamado/ver" method="post">
@@ -86,12 +86,12 @@
                             @if($respostas != '[]')
                                 @foreach ($respostas as $resposta)
                                 <div class="column">
-                                    <div style="display: flex; flex-direction:row;">
+                                    <div style="display: flex; flex-direction:row; font-size:16px;">
                                         <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
                                         <b>{{$resposta['nome']}}</b>
                                     </div>
 
-                                    <div class="text-left m-200px">
+                                    <div class="text-left m-200px" style="font-size:16px;">
                                         <?php echo $resposta['resposta'] ?>
                                         <hr>
                                     </div>

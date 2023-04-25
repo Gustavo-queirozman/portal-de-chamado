@@ -57,7 +57,7 @@
                 
                         @if(!empty($respostas))
                             <div style="margin:20px">
-                                <h1>{{$respostas[0]['titulo']}}</h1>
+                                <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
                                 <form action="/solicitante/chamado/ver" method="post">
                                     @csrf
                                     <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}">
@@ -70,16 +70,16 @@
                                 <br>
                             </div>
 
-                            <div class="d-flex column" style="margin:20px">
+                            <div class="d-flex column" style="margin:20px;">
                                 @foreach ($respostas as $resposta)
                                 <div class="column">
                                     <div style="display: flex; flex-direction:row;">
                                         <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
-                                        <b>{{$resposta['nome']}}</b>
+                                        <b style="font-size:16px;">{{$resposta['nome']}}</b>
                                     </div>
 
                                     <div class="text-left m-200px">
-                                        <?php echo $resposta['resposta'] ?>
+                                        <span style="font-size:16px;"><?php echo $resposta['resposta'] ?></span>
                                         <hr>
                                     </div>
                                 </div>
@@ -88,7 +88,6 @@
                         @else
                             <h3 style="text-align: center;">Aguardando resposta...</h3>
                         @endif
-                        
                     </div>
 
 

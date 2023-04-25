@@ -20,6 +20,12 @@
                 </div>
                 <li class="nav-item active">
                     <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
+                        <img src="./img/home.png" alt="Inicio" style="width: 25px;">
+                    </a>
+                </li>
+                <br>
+                <li class="nav-item active">
+                    <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
                         <img src="./img/perfil.png" alt="Perfil" style="width: 25px;">
                     </a>
                 </li>

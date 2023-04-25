@@ -1,4 +1,4 @@
-<?php $respostas = json_decode($respostas, true);?>
+<?php $respostas = json_decode($respostas, true); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,26 +14,33 @@
 
 <body>
     <div class="d-flex">
-        <nav class="d-flex column bg-dark-green min-height-100vh" style="width: 200px">
-            <ul class="nav">
+        <nav class="d-flex column bg-dark-green min-height-100vh" style="width: auto; position:fixed;">
+            <ul style="list-style: none; padding:0px;">
+                <div>
+                    <br><br>
+                    <br><br>
+                </div>
                 <li class="nav-item active">
                     <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Meu perfil</span>
+                        <img src="./img/home.png" alt="Inicio" style="width: 25px;">
+                    </a>
+                </li>
+                <br>
+                <li class="nav-item active">
+                    <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
+                        <img src="./img/perfil.png" alt="Perfil" style="width: 25px;">
                     </a>
                 </li>
                 <br>
                 <li>
                     <a href="/solicitante" class="nav-link">
-                        <i class="person-16"></i>
-                        <span>Chamados</span>
+                        <img src="../../img/chamado.png" alt="Chamados" style="width: 25px;">
                     </a>
                 </li>
                 <br>
                 <li>
-                    <a href="/entrar" class="nav-link">
-                        <i class="person-16"></i>
-                        <span>Sair</span>
+                    <a href="/logout" class="nav-link">
+                        <img src="./img/sair.png" alt="Sair" style="width: 25px;">
                     </a>
                 </li>
             </ul>
@@ -54,39 +61,39 @@
 
                 <body style="overflow-y: scroll;">
                     <div class="d-flex column">
-                
+
                         @if(!empty($respostas))
-                            <div style="margin:20px">
-                                <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
-                                <form action="/solicitante/chamado/ver" method="post">
-                                    @csrf
-                                    <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}">
-                                    <div >
-                                        <textarea name="resposta" id="editor" placeholder="Responder.."></textarea>
-                                    </div>
-
-                                    <input type="submit" value="Enviar">
-                                </form>
-                                <br>
-                            </div>
-
-                            <div class="d-flex column" style="margin:20px;">
-                                @foreach ($respostas as $resposta)
-                                <div class="column">
-                                    <div style="display: flex; flex-direction:row;">
-                                        <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
-                                        <b style="font-size:16px;">{{$resposta['nome']}}</b>
-                                    </div>
-
-                                    <div class="text-left m-200px">
-                                        <span style="font-size:16px;"><?php echo $resposta['resposta'] ?></span>
-                                        <hr>
-                                    </div>
+                        <div style="margin:20px; width:80%;" >
+                            <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
+                            <form action="/solicitante/chamado/ver" method="post">
+                                @csrf
+                                <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}">
+                                <div>
+                                    <textarea name="resposta" id="editor" placeholder="Responder.."></textarea>
                                 </div>
-                                @endforeach
+
+                                <input type="submit" value="Enviar">
+                            </form>
+                            <br>
+                        </div>
+
+                        <div class="d-flex column" style="margin:20px;">
+                            @foreach ($respostas as $resposta)
+                            <div class="column">
+                                <div style="display: flex; flex-direction:row;">
+                                    <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
+                                    <b style="font-size:16px;">{{$resposta['nome']}}</b>
+                                </div>
+
+                                <div class="text-left m-200px">
+                                    <span style="font-size:16px;"><?php echo $resposta['resposta'] ?></span>
+                                    <hr>
+                                </div>
                             </div>
+                            @endforeach
+                        </div>
                         @else
-                            <h3 style="text-align: center;">Aguardando resposta...</h3>
+                        <h3 style="text-align: center;">Aguardando resposta...</h3>
                         @endif
                     </div>
 
@@ -100,6 +107,96 @@
                             });
                     </script>
 
+                    <style>
+                        ::-webkit-scrollbar {
+                            width: 10px;
+                        }
+
+                        ::-webkit-scrollbar-track {
+                            background: #f1f1f1;
+                        }
+
+                        ::-webkit-scrollbar-thumb {
+                            background: #888;
+                            border-radius: 20px;
+
+                        }
+
+                        ::-webkit-scrollbar-thumb:hover {
+                            background: #555;
+                        }
+
+                        body {
+                            margin: 0px;
+                            padding: 0px;
+                            overflow-y: hidden;
+                        }
+
+                        #scroll {
+                            width: vmax;
+                            height: 100vmax;
+                            overflow-y: auto;
+                        }
+
+                        .d-flex {
+                            display: flex;
+                        }
+
+                        .flex-center {
+                            justify-content: center;
+                        }
+
+                        .justify-between {
+                            justify-content: space-between;
+                        }
+
+                        .column {
+                            flex-direction: column;
+                        }
+
+                        .row {
+                            flex-direction: row;
+                        }
+
+                        .bg-dark-green {
+                            background-color: #00995d;
+                        }
+
+                        .list-style-none {
+
+                            list-style-type: none;
+                        }
+
+                        .padding-top20px {
+                            padding-top: 20px;
+                        }
+
+                        .padding-bottom20px {
+                            padding-bottom: 20px;
+                        }
+
+                        .form-control {
+                            min-height: 35px;
+                            min-height: 35px;
+                        }
+
+                        .m-5px {
+                            margin: 5px;
+                        }
+
+                        .p-0px {
+                            padding: 0px;
+                        }
+
+                        .border-1px {
+                            border: 1px solid black;
+                        }
+
+                        .min-height-100vh {
+                            min-height: 100vh;
+                        }
+                    </style>
+ 
                 </body>
 
                 </html>

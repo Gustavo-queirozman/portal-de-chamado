@@ -43,3 +43,15 @@ php artisan serve
 </pre>
 </ol>
 
+
+
+Controllers
+    ->Usuario
+    ->Chamado
+    ->Resposta chamado
+Models
+    ->Usuario
+    ->Chamado
+    ->Resposta chamado
+Views
+    

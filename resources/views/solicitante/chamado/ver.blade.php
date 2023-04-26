@@ -14,7 +14,7 @@
 
 <body>
     <div class="d-flex">
-        <nav class="d-flex column bg-dark-green min-height-100vh" style="width: auto; position:fixed;">
+    <nav class="d-flex column bg-dark-green min-height-100vh" style="width: auto; position:fixed;">
             <ul style="list-style: none; padding:0px;">
                 <div>
                     <br><br>
@@ -22,13 +22,13 @@
                 </div>
                 <li class="nav-item active">
                     <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
-                        <img src="./img/home.png" alt="Inicio" style="width: 25px;">
+                        <img src="../../img/home.png" alt="Inicio" style="width: 25px;">
                     </a>
                 </li>
                 <br>
                 <li class="nav-item active">
                     <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
-                        <img src="./img/perfil.png" alt="Perfil" style="width: 25px;">
+                        <img src="../../img/perfil.png" alt="Perfil" style="width: 25px;">
                     </a>
                 </li>
                 <br>
@@ -40,14 +40,13 @@
                 <br>
                 <li>
                     <a href="/logout" class="nav-link">
-                        <img src="./img/sair.png" alt="Sair" style="width: 25px;">
+                        <img src="../../img/sair.png" alt="Sair" style="width: 25px;">
                     </a>
                 </li>
             </ul>
         </nav>
-
         <div style="width:100%">
-            <div class="d-flex column" style="width:100%">
+            <div class="d-flex column" style="width:100%; padding-left:70px;">
                 <!DOCTYPE html>
                 <html lang="pt-br">
 
@@ -65,7 +64,7 @@
                         @if(!empty($respostas))
                         <div style="margin:20px; width:80%;" >
                             <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
-                            <form action="/solicitante/chamado/ver" method="post">
+                            <form action="/solicitante/chamado/ver" method="post" style="width:400px;">
                                 @csrf
                                 <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}">
                                 <div>
@@ -204,7 +203,26 @@
         </div>
     </div>
 
+   
     <style>
+        ::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 20px;
+
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+        }
+        
         body {
             margin: 0px;
             padding: 0px;
@@ -213,10 +231,8 @@
 
         #scroll {
             width: vmax;
-            height: 45vmax;
-            overflow-y: scroll;
-
-
+            height: 100vmax;
+            overflow-y: auto;
         }
 
         .d-flex {
@@ -240,7 +256,7 @@
         }
 
         .bg-dark-green {
-            background-color: #035F54;
+            background-color: #00995d;
         }
 
         .list-style-none {
@@ -275,7 +291,7 @@
 
         .min-height-100vh {
             min-height: 100vh;
-        }
+        } 
     </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

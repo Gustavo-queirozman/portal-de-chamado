@@ -1,18 +1,20 @@
 @extends('layouts.app1')
-@section('title', 'Chamados')
+@section('title', 'Usuário')
 @section('content')
 
 <div id="scroll">
     <div class="d-flex column">
         <form action="/adm/usuario/{{$usuario['id']}}" method="post" style="padding-left:70px">
             @csrf
-            <input type="text" name="name" placeholder="Nome" value="{{$usuario['name']}}">
+            <input type="hidden" name="id" value="{{ $usuario['id'] }}">
             <br>
-            <input type="email" name="email" placeholder="E-mail" value="{{$usuario['email']}}">
+            <input type="text" name="name" placeholder="Nome" value="{{ $usuario['name'] }}">
             <br>
-            <input type="text" name="username" placeholder="Usuário" value="{{$usuario['username']}}">
+            <input type="email" name="email" placeholder="E-mail" value="{{ $usuario['email'] }}">
             <br>
-            <input type="text" name="password" placeholder="Senha" value="{{$usuario['password']}}">
+            <input type="text" name="username" placeholder="Usuário" value="{{ $usuario['username'] }}">
+            <br>
+            <input type="text" name="password" placeholder="Senha" value="{{ $usuario['password'] }}">
             <br>
             <select name="setor">
                 <option value="{{$usuario['setor']}}">{{$usuario['setor']}}</option>
@@ -32,7 +34,7 @@
             <br>
             <input type="text" name="codAnydesk" placeholder="Anydesk" value="{{$usuario['codAnydesk']}}">
             <br>
-            <input type="submit" value="Alterar">
+            <input type="submit" value="Salvar">
         </form>
     </div>
 </div>

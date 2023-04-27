@@ -8,21 +8,28 @@ use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
-    public function __construct(){
-        
+    public function __construct(){  
     }
 
     public function index(){
         $usuarios = DB::table('users')->select('id', 'name', 'email', 'username')->get();
-        return view('usuario.index',  [
+        return view('usuario.index', [
             'usuarios' => $usuarios
-        ]); 
+        ]);
     }
 
-    public function show($idUsuario)
-    {
+    public function show(){
         return view('usuario.usuario', [
-            'usuario' => User::findOrFail($idUsuario)
+            'usuario' => [
+                'id' => '',
+                'name' => '',
+                'email' => '',
+                'username' => '',
+                'password' => '',
+                'setor' => '',
+                'ramal' => '',
+                'codAnydesk' => ''
+            ]
         ]);
     }
     
@@ -51,7 +58,7 @@ class UsuarioController extends Controller
 
 
     public function edit($idUsuario){
-        return view('adm.usuario.editar', [
+        return view('usuario.usuario', [
             'usuario' => User::findOrFail($idUsuario)
         ]);
     }

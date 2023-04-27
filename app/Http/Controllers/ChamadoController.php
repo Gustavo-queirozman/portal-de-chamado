@@ -20,11 +20,21 @@ class ChamadoController extends Controller
     }
 
     public function show(){
-        $idUsuario = 1;
-        $chamado = new Chamado();
-        $chamados = $chamado->where('fkUsuario', $idUsuario)->get();
-        return view('atendente.home',  [
-            'chamados' => $chamados
+        //$idUsuario = 1;
+        //$chamado = new Chamado();
+        //$chamados = $chamado->where('fkUsuario', $idUsuario)->get();
+        return view('chamado.chamado',  [
+            'chamado' => [
+                'id' => '',
+                'tipo' => '',
+                'categoria' => '',
+                'prioridade' => '',
+                'titulo' => '',
+                'descricao' => '',
+                'status' => '',
+                'criado' => '',
+                'concluido' => ''
+            ]
         ]); 
     }
     
@@ -32,7 +42,7 @@ class ChamadoController extends Controller
         return view('atendente.chamado.criar');
     }
 
-    public function store(Request $request){       
+    public function store(Request $request){
         Chamado::create([
             'tipo' => $request->input('tipo'),
             'categoria' => $request->input('categoria'),
@@ -46,17 +56,21 @@ class ChamadoController extends Controller
 
 
     public function edit($idChamado){
-        return view('atendente.chamado.ver', [
+        return view('chamado.chamado', [
             'chamado' => Chamado::findOrFail($idChamado)
         ]);
     }
 
-    public function update(Request $request){
-        $idChamado = 1;
+    public function update(Request $request, $idChamado){
         $chamado = Chamado::findOrFail($idChamado);
         $chamado->tipo = $request->input('tipo');
+        $chamado->categoria = $request->input('categoria');
+        $chamado->prioridade = $request->input('prioridade');
+        $chamado->titulo = $request->input('titulo');
+        $chamado->descricao = $request->input('descricao');
+        $chamado->status = $request->input('status');
         $chamado->update();
-        return view('atendente.chamado.editar',  [
+        return view("chamado.chamado",  [
             'chamado' => Chamado::findOrFail($idChamado)
         ] );
     }

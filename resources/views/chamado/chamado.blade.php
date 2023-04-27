@@ -1,57 +1,92 @@
-<?php $respostas = json_decode($respostas, true); ?>
-
 @extends('layouts.app1')
 @section('title', 'Chamados')
 @section('content')
-<div style="padding-left:70px; overflow-y: scroll;" >
-    @if(!empty($respostas))
-    <div style="margin:20px; width:80%;">
-        <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
-        <form action="/adm/chamado/{{$respostas[0]['id']}}" method="post" style="width:400px;">
-            @csrf
-            
-            <input name="idChamado" type="text" value="{{$respostas[0]['id']}}">
-            <div>
-                <textarea name="resposta" id="editor" placeholder="Responder.."></textarea>
-            </div>
+<div class="d-flex align-items-center justify-content-center" style="padding-left:70px">
+    <div class="card w-75">
+        <div class="card-header"><b>Novo chamado</b></div>
 
-            <input type="submit" value="Enviar">
-        </form>
-        <br>
-    </div>
+        <div class="card-body">
+            <form action="/adm/chamado/{{$chamado['id']}}" method="post">
+                @csrf
+                <!-- columns -->
+                <div class="form-group">
+                    <div class="form-row align-items-center" style="display:flex;">
+                        <div class="col-md-4 mb-3" style="display:flex; flex-direction:column;">
+                            <!-- select -->
+                            <label for="tipo">Tipo*</label>
+                            <select class="custom-select" name="tipo" id="tipo">
+                                <option value="{{$chamado['tipo']}}">{{$chamado['tipo']}}</option>
+                                <option value="Software">Software</option>
+                                <option value="Hardware">Hardware</option>
+                            </select>
+                        </div>
 
-    <div class="d-flex column" style="margin:20px;">
-        @foreach ($respostas as $resposta)
-        <div class="column">
-            <div style="display: flex; flex-direction:row;">
-                <img style="width:30px; height:35px;" src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="perfil">
-                <b style="font-size:16px;">{{$resposta['nome']}}</b>
-            </div>
+                        <div class="col-md-4 mb-3" style="display:flex; flex-direction:column;">
+                            <!-- select -->
+                            <label for="categoria">Categoria*</label>
+                            <select class="custom-select" name="categoria" id="categoria">
+                                <option value="{{$chamado['categoria']}}" selected>{{$chamado['categoria']}}</option>
+                                <option value="sd">s</option>
+                            </select>
+                        </div>
 
-            <div class="text-left m-200px">
-                <span style="font-size:16px;"><?php echo $resposta['resposta'] ?></span>
-                <hr>
-            </div>
+                        <div class="col-md-4 mb-3" style="display:flex; flex-direction:column;">
+                            <!-- select -->
+                            <label for="select_id_8">Prioridade*</label>
+                            <select class="custom-select" name="prioridade" id="select_id_8">
+                                <option value="{{$chamado['prioridade']}}">{{$chamado['prioridade']}}</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Média">Média</option>
+                                <option value="Alta">Alta</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <!-- Input type text -->
+                    <label for="titulo">Titulo*</label>
+                    <input type="text" class="form-control" name="titulo" id="titulo" value="{{ $chamado['titulo'] }}" required>
+                </div>
+
+                <!-- textarea -->
+                <div class="form-group">
+                    <label for="descricao">Descrição*</label>
+                    <textarea class="form-control" rows="4" name="descricao" id="descricao" value="{{$chamado['descricao']}}" required></textarea>
+                </div>
+
+                <!-- columns -->
+                <div class="form-group">
+                    <div class="form-row align-items-center" style="display:flex;">
+                        <div class="col-md-4 mb-3">
+                            <!-- Input type text -->
+                            <label for="status">Status</label>
+                            <input type="text" class="form-control" name="status" id="status" value="{{$chamado['status']}}" disabled>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <!-- Input type text -->
+                            <label for="criado">Criado</label>
+                            <input type="date" class="form-control" name="criado" id="criado" placeholder="placeholder" value="{{$chamado['criado']}}" disabled>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <!-- Input type text -->
+                            <label for="concluido">Concluído</label>
+                            <input type="date" class="form-control" name="concluido" id="concluido" placeholder="placeholder" value="{{$chamado['concluido']}}" disabled>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <input type="submit" value="Salvar" class="btn btn btn-success">
+                </div>
+
+            </form>
         </div>
-        @endforeach
     </div>
-    @else
-    <h3 style="text-align: center;">Aguardando resposta...</h3>
-    @endif
-</div>
 </div>
 
-
-<script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
-<style>
-
-</style>
 @stop

@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-
 Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
+
 Route::prefix('adm')->group(function () {
     Route::get('/usuarios', [App\Http\Controllers\UsuarioController::class, 'index']); //ok
     Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
@@ -37,6 +37,8 @@ Route::prefix('adm')->group(function () {
 
     Route::get('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamado::class, 'index']);
     Route::post('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamado::class, 'store']);
+
+  
 });
 
 Route::get('logout', function (){

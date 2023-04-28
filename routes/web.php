@@ -37,8 +37,9 @@ Route::prefix('adm')->group(function () {
 
     Route::get('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamado::class, 'index']);
     Route::post('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamado::class, 'store']);
-
-  
+    
+    
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
 });
 
 Route::get('logout', function (){

@@ -24,17 +24,7 @@ class ChamadoController extends Controller
         //$chamado = new Chamado();
         //$chamados = $chamado->where('fkUsuario', $idUsuario)->get();
         return view('chamado.chamado',  [
-            'chamado' => [
-                'id' => '',
-                'tipo' => '',
-                'categoria' => '',
-                'prioridade' => '',
-                'titulo' => '',
-                'descricao' => '',
-                'status' => '',
-                'criado' => '',
-                'concluido' => ''
-            ]
+            'chamado' =>  null
         ]); 
     }
     

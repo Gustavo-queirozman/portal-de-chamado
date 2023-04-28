@@ -20,16 +20,7 @@ class UsuarioController extends Controller
 
     public function show(){
         return view('usuario.usuario', [
-            'usuario' => [
-                'id' => '',
-                'name' => '',
-                'email' => '',
-                'username' => '',
-                'password' => '',
-                'setor' => '',
-                'ramal' => '',
-                'codAnydesk' => ''
-            ]
+            'usuario' => null
         ]);
     }
     
@@ -51,7 +42,7 @@ class UsuarioController extends Controller
         $usuario->save();
 
         $usuarios = User::all();
-        return view('adm/usuario/ver', [
+        return view('usuario.index', [
             'usuarios' => $usuarios
         ]);
     }

@@ -1,4 +1,4 @@
-@extends('layouts.app1')
+@extends('layouts.sidebar1')
 @section('title', 'Chamados')
 @section('content')
 <ul id="scroll" style="display:flex; flex-direction:column; align-items:center; list-style:none;">

@@ -51,21 +51,7 @@
                         <img src="https://www.unimed.coop.br/site/image/layout_set_logo?img_id=23230463&t=1681642264534" alt="logo" style="width:100px;">
                     </div>-->
 
-                    <form action="" method="post" class="d-flex flex-center
-                padding-top20px padding-bottom20px" style="background-color: white; width:100%;">
-                        <div style=" display:flex;">
-                            <input type="text" name="palavra" placeholder="Número do chamado..." class="form-control m-5px">
-                            <select name="tipoPesquisa" class="form-control m-5px">
-                                <option value="numeroChamado">Número do chamado</option>
-                                <option value="hardware">Hardware</option>
-                                <option value="software">Software</option>
-                            </select>
-                            <input type="date" name="dataInicial" class="form-control
-                        m-5px">
-                            <input type="date" name="dataFinal" class="form-control m-5px">
-                            <button type="submit" class="form-control m-5px">Pesquisar</button>
-                        </div>
-                    </form>
+                    <br><br><br>
                 </header>
                 <div class="d-flex column" style="width:100%">
                     @yield('content')

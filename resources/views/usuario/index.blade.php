@@ -21,9 +21,13 @@
     </div>
 
     <div style="display:flex">
-        <a href="/adm/usuario/{{$usuario['id']}}"><input class="btn btn-default" type="submit" value="Atualizar" /></a>
+        <a href="/adm/usuario/{{$usuario['id']}}">
+            <img src="../../img/editar.png" alt="editar">
+        </a>
+
         <form action="/adm/usuario/{{$usuario['id']}}" method="post">
-            <input class="btn btn-default" type="submit" value="Deletar" />
+            <button type="file" src="../../img/delete.png" type="submit">
+                
             @method('Delete')
             @csrf
         </form>

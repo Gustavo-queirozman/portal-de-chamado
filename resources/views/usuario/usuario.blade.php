@@ -59,7 +59,7 @@
 
 <div style="padding-left: 70px; display:flex; justify-content:center; height:100vh; align-items:center">
     <div class="card">
-        <div class="card-header">Usuário</div>
+        <div class="card-header" style="font-size:20px; background-color: #00995D; color:white;">Usuário</div>
         <div class="card-body">
             <form action="/adm/usuario/{{ optional($usuario)['id'] }}" method="post">
                 <!-- Input type text -->
@@ -123,6 +123,7 @@
         </div>
     </div>
 </div>
+
 <style>
     label {
         margin-bottom: 0px;

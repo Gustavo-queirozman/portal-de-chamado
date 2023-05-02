@@ -1,22 +1,20 @@
 <?php $respostas = json_decode($respostas, true); ?>
 
-@extends('layouts.app1')
-@section('title', 'Chamados')
+@extends('layouts.sidebar2')
+@section('title', 'Resposta chamado')
 @section('content')
-<div style="padding-left:70px; ">
-    <div style="
-    height:100%; overflow-y: scroll;">
+<div style="padding-left:70px;">
+    <div style="height:100%; overflow-y: scroll;">
         @if(!empty($respostas))
         <div style="margin:20px; width:80%;">
             <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
-            <form action="/adm/chamado/{{$respostas[0]['id']}}" method="post" style="width:400px;">
+            <form action="/adm/resposta-chamado/{{$respostas[0]['id']}}" method="post" style="width:400px;">
                 @csrf
-
                 <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}"  style="height:300px; width:500px; margin:0px;">
                 <div >
                     <textarea name="resposta" id="editor" placeholder="Responder.." style="height:300px; width:500px; margin:0px;"></textarea>
                 </div>
-
+                <input type="text" name="" value="{{$respostas[0]['id']}}">
                 <input type="submit" value="Enviar">
             </form>
             <br>

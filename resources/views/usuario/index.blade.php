@@ -4,10 +4,15 @@
 @section('title', 'Chamados')
 @section('content')
 
+<br>
 @foreach ($usuarios as $usuario)
-<div class="d-flex justify-between" style="justify-content: space-around; align-items:center;">
-    <div class="d-flex column">
-        <ul class="d-flex" style="padding:0px" class="list-style-none">
+<div style="width:100%; display:flex; justify-content:center; margin:0px; align-items:center">
+    <div class="d-flex justify-between" style="justify-content: space-around;
+                                align-items:center; background-color: white; width:700px; padding: 20px; border-radius:7px;">
+
+
+    <div class="d-flex column" >
+        <ul class="d-flex" style="padding:0px; margin-bottom:0px; list-style:none" class="list-style-none">
             <li style="margin-right:20px">
                 <i>@ {{$usuario['username']}}</i>
             </li>
@@ -22,15 +27,18 @@
 
     <div style="display:flex">
         <a href="/adm/usuario/{{$usuario['id']}}">
-            <img src="../../img/editar.png" alt="editar">
+            <img src="../../img/editar.png" alt="editar" style="width:25px;">
         </a>
 
         <form action="/adm/usuario/{{$usuario['id']}}" method="post">
-            <button type="file" src="../../img/delete.png" type="submit">
-                
+            <button type="submit" type="submit" style="border:1px solid transparent; background-color:white;">
+            <img src="../../img/delete.png" alt="deletar" style="width:25px">
             @method('Delete')
             @csrf
         </form>
+    </div>
+
+
     </div>
 </div>
 <br>

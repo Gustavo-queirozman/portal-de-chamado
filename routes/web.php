@@ -17,6 +17,54 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
+
+/*
+Route::get('/', function () {
+    return view('autenticacao.entrar');
+});
+
+Route::get('/entrar', function () {
+    return view('autenticacao.entrar');
+});
+
+Route::post('/entrar', [App\Http\Controllers\autenticacao\EntrarController::class, 'entrar'])->name('entrar');
+
+
+
+Route::get('/cadastro', function () {
+    return view('autenticacao.index');
+});
+Route::post('/cadastro', [App\Http\Controllers\autenticacao\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
+
+Route::get('/solicitarCadastro', function () {
+    return view('autenticacao.solicitarCadastro');
+});
+Route::post('/solicitarCadastro', [App\Http\Controllers\autenticacao\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
+
+Route::get('/cadastro', function () {
+    return view('autenticacao.cadastro');
+});
+Route::post('/cadastro', [App\Http\Controllers\autenticacao\CadastroController::class, 'cadastro'])->name('cadastro');
+
+Route::get('/mudarSenha', function () {
+    return view('autenticacao.mudarSenha');
+});
+Route::post('/mudarSenha', [App\Http\Controllers\autenticacao\MudarSenhaController::class, 'mudarSenha'])->name('mudarSenha');
+
+Route::get('/esqueciSenha', function () {
+    return view('autenticacao.esqueciSenha');
+});
+Route::post('/esqueciSenha', [App\Http\Controllers\autenticacao\EsqueciSenhaController::class, 'enviarNovaSenhaNoEmail'])->name('esqueciSenha');
+
+
+Route::get('/login', function () {
+    return view('autenticacao.entrar');
+});
+
+Route::get('/entrar', [App\Http\Controllers\Auth\LoginController::class, 'show']);
+*/
+
 Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
 
@@ -35,9 +83,8 @@ Route::prefix('adm')->group(function () {
     Route::post('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'update']); //ok
     //Route::delete('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'delete']);
 
-    Route::get('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamado::class, 'index']);
-    Route::post('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamado::class, 'store']);
-    
+    Route::get('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamadoController::class, 'index']);
+    Route::post('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamadoController::class, 'store']);
     
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
 });
@@ -49,4 +96,3 @@ Route::get('logout', function (){
 })->name('logout');
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,7 +2,7 @@
 @section('title', 'Chamados')
 @section('content')
 <ul id="scroll" style="display:flex; flex-direction:column; align-items:center; list-style:none;">
-    <br>
+<br>
     @foreach ($chamados as $chamado)
     <div class="width:100%; display:flex; justify-content:center; margin:0px; align-items:center">
         <div class="d-flex justify-between" style="justify-content: space-around;

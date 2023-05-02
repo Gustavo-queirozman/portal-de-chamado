@@ -1,4 +1,4 @@
-@extends('layouts.sidebar1')
+@extends('layouts.sidebar2')
 @section('title', 'Chamados')
 @section('content')
 <div class="d-flex align-items-center justify-content-center" style="padding-left:70px">

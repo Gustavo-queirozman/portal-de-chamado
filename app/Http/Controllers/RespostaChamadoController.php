@@ -17,7 +17,7 @@ class RespostaChamadoController extends Controller
             ->orderByDesc('dataHora')
             ->get();
 
-        return view('chamado.chamado',  [
+        return view('respostaChamado.index',  [
             'respostas' => $respostas
         ]);
     }
@@ -26,13 +26,12 @@ class RespostaChamadoController extends Controller
     {
         $idUsuario = 1;
         $idChamado = $request->input('idChamado');
-        
         RespostaChamado::create([
             'fkUsuario' => $idUsuario,
             'fkChamado' => $idChamado,
             'resposta' => $request->input('resposta')
         ]);
 
-        return redirect("/solicitante/chamado/ver/$idChamado");
+        return redirect("/adm/resposta-chamado/$idChamado");
     }
 }

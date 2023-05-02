@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RespostaChamado extends Model
 {
-    use HasFactory;
+    protected $table = 'respostachamado';
+    protected $fillable = ['fkUsuario', 'fkChamado', 'resposta', 'dataHora'];
+    public $timestamps = false;
 }

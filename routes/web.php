@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
+use function Ramsey\Uuid\v1;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,16 +59,37 @@ Route::get('/esqueciSenha', function () {
 });
 Route::post('/esqueciSenha', [App\Http\Controllers\autenticacao\EsqueciSenhaController::class, 'enviarNovaSenhaNoEmail'])->name('esqueciSenha');
 
-
+*/
 Route::get('/login', function () {
     return view('autenticacao.entrar');
 });
-
-Route::get('/entrar', [App\Http\Controllers\Auth\LoginController::class, 'show']);
-*/
+Route::get('/entrar', function () {
+    return view('autenticacao.entrar');
+});
 
 Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
+
+
+#esqueci senha
+Route::get('/esqueciSenha', function () {
+    return view('autenticacao.esqueciSenha');
+});
+Route::post('/esqueciSenha', [App\Http\Controllers\autenticacao\EsqueciSenhaController::class, 'enviarNovaSenhaNoEmail'])->name('esqueciSenha');
+#solicitar cadastro
+Route::get('/solicitarCadastro', function () {
+    return view('autenticacao.solicitarCadastro');
+});
+Route::post('/solicitarCadastro', [App\Http\Controllers\autenticacao\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
+
+#mudar senha
+Route::get('/mudarSenha', function () {
+    return view('autenticacao.mudarSenha');
+});
+Route::post('/mudarSenha', [App\Http\Controllers\autenticacao\MudarSenhaController::class, 'mudarSenha'])->name('mudarSenha');
+
+
+
 
 Route::prefix('adm')->group(function () {
     Route::get('/usuarios', [App\Http\Controllers\UsuarioController::class, 'index']); //ok
@@ -95,4 +118,6 @@ Route::get('logout', function (){
     return Redirect::to('/entrar');
 })->name('logout');
 
+
+Auth::routes(['register' => false]);
 Auth::routes();

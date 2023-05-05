@@ -1,7 +1,3 @@
-
-
-
-
 @extends('layouts.sidebar2')
 @section('title', 'Usuário')
 @section('content')
@@ -14,9 +10,10 @@
     <div class="card">
         <div class="card-header" style="font-size:20px; background-color: #00995D; color:white;">Usuário</div>
         <div class="card-body">
-            <form action="/adm/usuario/{{ optional($usuario)['id'] }}" method="post">
+            <form action="/adm/usuario/{{ optional( $usuario)['id'] }}" method="post">
                 <!-- Input type text -->
                 <div class="form-group">
+
                     <label for="nome">Nome</label>
                     <input type="text" class="form-control" name="nome" id="name" value="{{optional($usuario)['name']}}" required>
                 </div>

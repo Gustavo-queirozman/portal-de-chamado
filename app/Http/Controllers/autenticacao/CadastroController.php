@@ -28,7 +28,6 @@ class CadastroController extends Controller
             'codAnydesk' => $request->input('codAnydesk')
         ];
 
-        //Endereço de email para receber o email
         Mail::to($request->input('email'))->send(new SolicitarCadastroMail($mailData));
 
         dd('Email enviado com sucesso!');
@@ -55,7 +54,7 @@ class CadastroController extends Controller
             echo "Não é possível efetuar o cadastro pois o email já está em uso";
         }
 
-        $contato = new Cadastro();
+        $contato = new User();
         $contato->create($request->all());
         return view('cadastro');
     }

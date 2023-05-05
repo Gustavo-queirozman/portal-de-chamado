@@ -30,6 +30,7 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {       
+        dd('rota store');
         $usuario = new User;
         $usuario->name = $request->input('name');
         $usuario->username = $request->input('username');

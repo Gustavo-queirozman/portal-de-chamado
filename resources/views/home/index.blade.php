@@ -35,9 +35,7 @@
         </div>
     </a>
 </div>
-<?php
-echo Auth
-?>
+
 <style>
     .flex {
         display: flex;

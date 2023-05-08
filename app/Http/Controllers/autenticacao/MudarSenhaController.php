@@ -13,10 +13,6 @@ class MudarSenhaController extends Controller
         
     }
 
-    public function index(){
-        return "dgsgdsgs";
-    }
-
     public function mudarSenha(Request $request)
     {
         $novaSenha = "teste";

@@ -13,15 +13,6 @@ class EntrarController extends Controller
         return view('autenticacao.entrar');
     }
 
-    /*
-    public function show(){
-        $idUsuario = 1;
-        $usuario = new User();
-        $usuario = $usuario->where('idUsuario', $idUsuario)->get();
-        $usuario->fill($usuario);
-        return view('solicitante.perfil.editar', ['usuario'=>$usuario]);
-    }*/
-
     public function entrar(Request $request)
     {
 

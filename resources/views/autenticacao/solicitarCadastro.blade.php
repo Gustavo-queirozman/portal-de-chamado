@@ -1,32 +1,3 @@
-<!--
-<h1>Cadastrar usuário</h1>
-
-<form action="{{ route('cadastro')}}" method="post">
-    @csrf
-    <input type="text" name="usuario" placeholder="Usuário" value="{{old('usuario')}}">
-    <br>
-    <input type="text" name="senha" placeholder="Senha" value="{{old('senha')}}">
-    <br>
-    <input type="text" name="nome" placeholder="Nome" value="{{old('nome')}}">
-    <br>
-    <input type="text" name="email" placeholder="Email" value="{{old('email')}}">
-    <br>
-    <select name="setor">
-        <option selected>Selecionar setor..</option>
-        <option value="a">a</option>
-        <option value="b">b</option>
-        <option value="c">c</option>
-    </select>
-    <br>
-    <select name="nivelPermissao">
-        <option selected>Selecionar nível de permissão..</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select>
-    <br>
-    <input type="submit" value="Cadastrar">
-</form>-->
 
 
 
@@ -55,7 +26,6 @@
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="margin-top:10px">
                 <form action="{{ route('solicitarCadastro') }}" method="post">
                         @csrf
-
                         <div class="form-outline mb-4">
                             <input type="text" id="nome" name="nome" class="form-control form-control-lg" placeholder="Nome" required value="{{ old('nome') }}" />
                         </div>
@@ -63,11 +33,7 @@
                         <div class="form-outline mb-4">
                             <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="E-mail" required value="{{ old('email') }}" />
                         </div>
-                        
-                        <!--<div class="form-outline mb-4">
-                            <input type="text" id="usuario" name="usuario" class="form-control form-control-lg" placeholder="Usuário" required value="{{ old('usuario')}}" />
-                        </div>-->
-
+                    
                         <div class="form-outline mb-4">
                             <select class="form-select" aria-label="Default select example" name="setor">
                                 <option selected>Selecione o setor...</option>
@@ -92,20 +58,16 @@
                         <div class="form-outline mb-4">
                             <input type="text" id="codAnydesk" name="codAnydesk" class="form-control form-control-lg" placeholder="Código Anydesk" required value="{{ old('codAnyDesk')}}" />
                         </div>
-                        <!--
-           
-                        <div class="form-outline mb-4">
-                            <select class="form-select" aria-label="Default select example" name="nivelPermissao">
-                                <option selected>Selecionar nível de permissão..</option>
-                                <option value="Supervisor">Supervisor</option>
-                                <option value="Administrador">Administrador</option>
-                                <option value="Suporte de TI">Suporte de TI</option>
-                            </select>
-                        </div>-->
                         
                         <div class="text-center text-lg-center mt-1 pt-2">
                             <input type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Solicitar" />
                             <br><br>
+                            
+                            <?php
+                            if (isset($message)) {
+                                echo '<script>alert("Enviado com sucesso!");</script>';
+                            }
+                            ?>
                             <div class="d-flex justify-content-center align-items-cente text-center">
                                 <p>
                                     <a href="/esqueciSenha" class="text-decoration-none text-dark">Esqueci minha

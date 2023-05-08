@@ -20,19 +20,19 @@
                         <br><br>
                     </div>
                     <li class="nav-item active">
-                        <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
+                        <a href="adm/home" class="nav-link" style="width:100%;">
                             <img src="../../img/home.png" alt="Inicio" style="width: 25px;">
                         </a>
                     </li>
                     <br>
                     <li class="nav-item active">
-                        <a href="/solicitante/perfil/editar" class="nav-link" style="width:100%;">
+                        <a href="/{{auth()->user()->type}}/usuarios" class="nav-link" style="width:100%;">
                             <img src="../../img/perfil.png" alt="Perfil" style="width: 25px;">
                         </a>
                     </li>
                     <br>
                     <li>
-                        <a href="/solicitante" class="nav-link">
+                        <a href="/{{auth()->user()->type}}/chamados" class="nav-link">
                             <img src="../../img/chamado.png" alt="Chamados" style="width: 25px;">
                         </a>
                     </li>

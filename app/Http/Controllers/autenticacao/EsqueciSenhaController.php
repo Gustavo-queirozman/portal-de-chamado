@@ -32,7 +32,9 @@ class EsqueciSenhaController extends Controller
 
         //Endereço de email para receber o email
         Mail::to($request->input('email'))->send(new resetarSenhaMail($mailData));
-
-        dd('Email enviado com sucesso!');
+        
+        $message = "Enviado com sucesso!";
+        return view('autenticacao.esqueciSenha', ['message' => $message]);
+        
     }
 }

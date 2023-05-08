@@ -60,6 +60,10 @@ Route::get('/esqueciSenha', function () {
 Route::post('/esqueciSenha', [App\Http\Controllers\autenticacao\EsqueciSenhaController::class, 'enviarNovaSenhaNoEmail'])->name('esqueciSenha');
 
 */
+
+Route::get('/', function () {
+    return view('autenticacao.entrar');
+});
 Route::get('/login', function () {
     return view('autenticacao.entrar');
 });
@@ -120,5 +124,5 @@ Route::get('logout', function (){
 })->name('logout');
 
 Auth::routes();
-Auth::routes(['register' => false]);
+
 

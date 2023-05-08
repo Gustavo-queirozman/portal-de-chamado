@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="flex wrap justify-center align-center h-100vh" style="padding-left: 70px;">
-    <a href="" style="text-decoration: none;">
+    <a href="/{{auth()->user()->type}}/usuarios" style="text-decoration: none;">
     <div class="flex column align-center w-m-260px m-5px  justify-center" style="border-radius: 5px; padding:5px; height:150px;  background-color:white;">
             <img src="../../img/usuarios.png" alt="gestão" style="width:25px">
             <br>
@@ -11,7 +11,7 @@
         </div>
     </a>
 
-    <a href="" style="text-decoration: none;">
+    <a href="/{{auth()->user()->type}}/chamado" style="text-decoration: none;">
     <div class="flex column align-center w-m-260px m-5px  justify-center" style="border-radius: 5px; padding:5px; height:150px;  background-color:white;">
             <img src="../../img/novo-chamado.png" alt="gestão" style="width:25px">
             <br>
@@ -19,7 +19,7 @@
         </div>
     </a>
 
-    <a href="{{}}" style="text-decoration: none;">
+    <a href="/{{auth()->user()->type}}/chamados" style="text-decoration: none;">
         <div class="flex column align-center w-m-260px m-5px  justify-center" style="border-radius: 5px; padding:5px; height:150px;  background-color:white;">
             <img src="../../img/chamado-verde.png" alt="chamados" style="width:25px">
             <br>
@@ -27,7 +27,8 @@
         </div>
     </a>
 
-    <a href="" style="text-decoration: none;">
+    
+    <a href="/{{auth()->user()->type}}/gestao" style="text-decoration: none;">
         <div class="flex column align-center w-m-260px m-5px  justify-center" style="border-radius: 5px; padding:5px; height:150px;  background-color:white;">
             <img src="../../img/gestao-verde.png" alt="gestão" style="width:25px">
             <br>

@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Mail;
 
 class CadastroController extends Controller
 {
-    public function index(){
-        return "sdcscdscsdc";
-    }
-
     public function solicitarCadastro(Request $request)
     {
 
@@ -30,7 +26,9 @@ class CadastroController extends Controller
 
         Mail::to($request->input('email'))->send(new SolicitarCadastroMail($mailData));
 
-        dd('Email enviado com sucesso!');
+        $message = "Cadastro solicitado!";
+
+        return view("autenticacao.solicitarCadastro",['message' => $message]);
     }
 
 

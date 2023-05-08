@@ -19,16 +19,26 @@
                 <div class="col-md-9 col-lg-6 col-xl-5" style="padding-left:0px; padding-right:0px;">
                     <img src="https://giu.unimed.coop.br/img/thumbnail_2-01.d1fca7ec.jpg" class="img-fluid" alt="Sample image">
                 </div>
-                
+
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="margin-top:10px">
-                    <form action="/login" method="post">
+                    <form action="{{route('login')}}" method="post">
                         @csrf
                         <div class="form-outline mb-4">
                             <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="Usuário" required value="{{ old('username') }}" />
+                            @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="form-outline mb-3">
                             <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Senha" required value="{{ old('password') }}">
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="text-center text-lg-center mt-1 pt-2">
@@ -51,10 +61,11 @@
     </section>
 
     <style>
-        body{
+        body {
             padding: 0px;
             margin: 0px;
         }
+
         .btn-primary {
             background-color: #00995d;
             border-color: #00995d;

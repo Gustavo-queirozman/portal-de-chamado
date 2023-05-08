@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <body style="background-color: #f1f2f1;">
         <div class="d-flex">
             <nav class="d-flex column bg-dark-green min-height-100vh" style="width: auto; position:fixed;">
@@ -20,28 +21,30 @@
                         <br><br>
                     </div>
                     <li class="nav-item active">
-                        <a href="/adm/home" class="nav-link" style="width:100%;">
+                        <a href="/{{auth()->user()->type}}/home" class="nav-link" style="width:100%;">
                             <img src="../../img/home.png" alt="Inicio" style="width: 25px;">
                         </a>
                     </li>
                     <br>
                     <li class="nav-item active">
-                        <a href="/adm/usuarios" class="nav-link" style="width:100%;">
+                        <a href="/{{auth()->user()->type}}/usuarios" class="nav-link" style="width:100%;">
                             <img src="../../img/perfil.png" alt="Perfil" style="width: 25px;">
                         </a>
                     </li>
                     <br>
                     <li>
-                        <a href="/adm/chamados" class="nav-link">
+                        <a href="/{{auth()->user()->type}}/chamados" class="nav-link">
                             <img src="../../img/chamado.png" alt="Chamados" style="width: 25px;">
                         </a>
                     </li>
                     <br>
+                    @if(auth()->user()->type == 'adm')
                     <li>
-                        <a href="/adm/gestao" class="nav-link">
+                        <a href="/{{auth()->user()->type}}/gestao" class="nav-link">
                             <img src="../../img/gestao.png" alt="Gestão" style="width: 25px;">
                         </a>
                     </li>
+                    @endif
                     <br>
                     <li>
                         <a href="/logout" class="nav-link">

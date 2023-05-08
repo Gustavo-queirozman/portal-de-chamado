@@ -20,6 +20,8 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    
+    protected $redirectTo = '/home';
 
     use AuthenticatesUsers;
 
@@ -28,13 +30,14 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
      *
      * @return void
-     */
+    */
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -50,6 +53,7 @@ class LoginController extends Controller
         return view('autenticacao.entrar');
     }
 
+    /*
     protected function authenticated($user)
     {
         $usuarioId = Auth::id();
@@ -60,6 +64,7 @@ class LoginController extends Controller
         }
 
         $rota = "/" . $usuario['type'];
-        return redirect($rota);
+        return view($rota);
     }
+    */
 }

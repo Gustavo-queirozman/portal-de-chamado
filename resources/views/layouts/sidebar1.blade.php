@@ -72,7 +72,7 @@
                             <input type="date" name="dataInicial" class="form-control
                         m-5px">
                             <input type="date" name="dataFinal" class="form-control m-5px">
-                            <button type="submit" class="form-control m-5px" style="background-color: #00995d; color:white; border:1px solid #00995d">Pesquisar</button>
+                            <button type="submit" class="form-control m-5px" style="background-color: #00995d; color:white; border:1px solid #F0F2F5">Pesquisar</button>
                         </div>
                     </form>
                 </header>

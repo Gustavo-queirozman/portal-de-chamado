@@ -50,31 +50,32 @@ Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
 
 //Route::middleware(['auth'])->group(function () {
-  Route::prefix('adm')->group(function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
-        Route::get('/usuarios', [App\Http\Controllers\UsuarioController::class, 'index']); //ok
-        Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
-        Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']); //ok
-        Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
-        Route::post('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']); //ok
-        Route::delete('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']); //ok
-        Route::post('/pequisa-usuario', [App\Http\Controllers\UsuarioController::class, 'search']);
+Route::prefix('adm')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
+    Route::post('/pesquisa-usuario', [App\Http\Controllers\PesquisaUsuarioController::class, 'search']); //ok
+    Route::get('/usuarios', [App\Http\Controllers\UsuarioController::class, 'index']); //ok
+    Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
+    Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']); //ok
+    Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
+    Route::post('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']); //ok
+    Route::delete('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']); //ok
 
-        Route::get('/chamados', [App\Http\Controllers\ChamadoController::class, 'index']); //ok
-        Route::get('/chamado', [App\Http\Controllers\ChamadoController::class, 'show']); //ok
-        Route::post('/chamado', [App\Http\Controllers\ChamadoController::class, 'store']); //OK
-        Route::get('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'edit']); //ok
-        Route::post('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'update']); //ok
-        Route::post('/pequisa-chamado', [App\Http\Controllers\ChamadoController::class, 'search']);
+    Route::post('/pesquisa-chamado', [App\Http\Controllers\PesquisaChamadoController::class, 'search']); //ok
+    Route::post('/chamados', [App\Http\Controllers\ChamadoController::class, 'index']); //ok
+    Route::get('/chamado', [App\Http\Controllers\ChamadoController::class, 'show']); //ok
+    Route::post('/chamado', [App\Http\Controllers\ChamadoController::class, 'store']); //OK
+    Route::get('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'edit']); //ok
+    Route::post('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'update']); //ok
 
-        Route::get('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamadoController::class, 'index']);
-        Route::post('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamadoController::class, 'store']);
-    });
+    Route::get('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamadoController::class, 'index']);
+    Route::post('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamadoController::class, 'store']);
+});
 //});
 
 
 Route::group(['middleware' => ['auth']], function () {
     Route::prefix('solicitante')->group(function () {
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
         Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']); //ok
         Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
@@ -85,11 +86,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/chamado', [App\Http\Controllers\ChamadoController::class, 'store']); //OK
         Route::get('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'edit']); //ok
         Route::post('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'update']); //ok
-        //Route::delete('/chamado/{id}', [App\Http\Controllers\ChamadoController::class, 'delete']);
 
         Route::get('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamadoController::class, 'index']);
         Route::post('/resposta-chamado/{id}', [App\Http\Controllers\RespostaChamadoController::class, 'store']);
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
     });
 });
 

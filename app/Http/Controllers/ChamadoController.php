@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ChamadoController extends Controller
 {
+
     public function index(Request $request)
     {
         $idUsuario = auth()->user()->id;
@@ -19,6 +20,7 @@ class ChamadoController extends Controller
         //1- Pesquisar chamados entre intervalo de datas
         if ($tipoPesquisa == 'Hardware' && !empty($dataInicial)) {
             $chamado = DB::table('chamado')->where('tipo', '=', 'Hardware')->get();
+            dd('ssfdfsd');
         }
 
         if ($tipoPesquisa == 'Software' && !empty($dataInicial)) {

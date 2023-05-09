@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-
     public function show(){
         return view('home.index');    
         //$teste = Auth::user();

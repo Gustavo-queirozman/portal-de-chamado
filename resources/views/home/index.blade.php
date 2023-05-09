@@ -27,7 +27,7 @@
         </div>
     </a>
 
-    
+    @if(auth()->user()->type == 'adm')
     <a href="/{{auth()->user()->type}}/gestao" style="text-decoration: none;">
         <div class="flex column align-center w-m-260px m-5px  justify-center" style="border-radius: 5px; padding:5px; height:150px;  background-color:white;">
             <img src="../../img/gestao-verde.png" alt="gestão" style="width:25px">
@@ -35,6 +35,7 @@
             <h5 style="height:20px; color: #00995D;">Gestão</h5>
         </div>
     </a>
+    @endif
 </div>
 
 <style>

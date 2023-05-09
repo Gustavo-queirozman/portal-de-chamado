@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class UsuarioController extends Controller
 {
     public function __construct(){  
+        
     }
 
     public function index(){
@@ -76,5 +77,14 @@ class UsuarioController extends Controller
     public function delete($idUsuario){
         User::where('id', $idUsuario)->delete();
         return redirect('adm/usuarios');
+    }
+
+    public function search(Request $request){
+        dd($request);
+        $usuario ='';
+        $nome = '';
+        $email = '';
+        $dataInicial = '';
+        $dataFinal = '';
     }
 }

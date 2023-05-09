@@ -60,11 +60,11 @@
                         <img src="https://www.unimed.coop.br/site/image/layout_set_logo?img_id=23230463&t=1681642264534" alt="logo" style="width:100px;">
                     </div>-->
 
-                    <form action="/adm/chamados" method="post" class="d-flex flex-center
+                    <form action="/adm/pesquisa-chamado" method="post" class="d-flex flex-center
                 padding-top20px padding-bottom20px" style="background-color: white; width:100%;">
                         <div style=" display:flex;">
                             @csrf
-                            <input type="text" name="palavra" placeholder="Número do chamado..." class="form-control m-5px">
+                            <input type="text" name="codigoChamado" placeholder="Número do chamado..." class="form-control m-5px">
                             <select name="tipoPesquisa" class="form-control m-5px">
                                 <option value="numeroChamado">Número do chamado</option>
                                 <option value="hardware">Hardware</option>

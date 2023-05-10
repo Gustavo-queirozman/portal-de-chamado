@@ -12,39 +12,35 @@ class PesquisaChamadoController extends Controller
     public function search(Request $request){
         $idUsuario = auth()->user()->id;
         $codigoChamado = $request->input('codigoChamado');
-        $tipoPesquisa = $request->input('codigoChamado');
+        $tipoPesquisa = $request->input('tipoPesquisa');
         $dataInicial = $request->input('dataInicial');
-        $dataFinal = $request->input('dataFinical');
-
-        //1- Pesquisar chamados entre intervalo de datas
-        if ($tipoPesquisa == 'Hardware' && !empty($dataInicial)) {
-            $chamado = DB::table('chamado')->where('tipo', '=', 'Hardware')->get();
-            dd('ssfdfsd');
-        }
-
-        if ($tipoPesquisa == 'Software' && !empty($dataInicial)) {
-            $chamado = DB::table('chamado')->where('tipo', '=', 'Software')->get();
-        }
+        $dataFinal = $request->input('dataFinal');
 
         //2- Pesquisar chamados pelo tipo de chamado == hardware
-        if ($tipoPesquisa == 'Hardware' && empty($dataInicial)) {
+        if ($tipoPesquisa == 'Hardware' && $dataInicial == null) {
             $chamados = DB::table('chamado')->where('tipo', '=', 'Hardware')->get();
+            $chamados = json_decode($chamados, true);
             return view('chamado.index',  [
                 'chamados' => $chamados
             ]);
         }
 
         //3- Pesquisar chamados pelo tipo de chamado == software
-        if ($tipoPesquisa == 'Software' && empty($dataInicial)) {
+        if ($tipoPesquisa == 'Software' && $dataInicial == null) {
             $chamados = DB::table('chamado')->where('tipo', '=', 'Software')->get();
+            $chamados = json_decode($chamados, true);
             return view('chamado.index',  [
                 'chamados' => $chamados
             ]);
         }
 
         //4- Pesquisar chamados pelo numero do chamado
-        if ($tipoPesquisa == 'codigoChamado' && empty($dataInicial)) {
-            $chamado = DB::table('chamado')->where('id', '=', $codigoChamado)->get();
+        if ($tipoPesquisa == 'codigoChamado' && $dataInicial == null) {
+            $chamados = DB::table('chamado')->where('id', '=', $codigoChamado)->get();
+            $chamados = json_decode($chamados, true);
+            return view('chamado.index',  [
+                'chamados' => $chamados
+            ]);
         }
 
         //5- Pesquisar chamados pelo tipo de chamado == hardware e data
@@ -53,17 +49,19 @@ class PesquisaChamadoController extends Controller
                 ->where('tipo', '=', 'Hardware')
                 ->whereBetween('criadoDataHora', [$dataInicial, $dataFinal])
                 ->get();
+            $chamados = json_decode($chamados, true);
             return view('chamado.index',  [
                 'chamados' => $chamados
             ]);
         }
 
         //6- Pesquisar chamados pelo tipo de chamado == software e data
-        if ($tipoPesquisa == 'Software' && !empty($dataInicial) && !empty($dataFinal)) {
+        if ($tipoPesquisa == 'Software' && $dataInicial != null) {
             $chamados = DB::table('chamado')
                 ->where('tipo', '=', 'Software')
                 ->whereBetween('criadoDataHora', [$dataInicial, $dataFinal])
                 ->get();
+            $chamados = json_decode($chamados, true);
             return view('chamado.index',  [
                 'chamados' => $chamados
             ]);
@@ -72,6 +70,7 @@ class PesquisaChamadoController extends Controller
         //montar pesquisa pegando todos os dados, nesse ceario os dados vem sem filtro
         $chamado = new Chamado();
         $chamados = $chamado->where('fkUsuario', $idUsuario)->get();
+        $chamados = json_decode($chamados, true);
         return view('chamado.index',  [
             'chamados' => $chamados
         ]);

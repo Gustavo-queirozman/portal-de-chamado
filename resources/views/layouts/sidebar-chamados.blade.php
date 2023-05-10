@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <body style="background-color: #f1f2f1;">
         <div class="d-flex">
             <nav class="d-flex column bg-dark-green min-height-100vh" style="width: auto; position:fixed;">

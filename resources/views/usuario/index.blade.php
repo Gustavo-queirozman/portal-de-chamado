@@ -1,6 +1,6 @@
 <?php $usuarios = json_decode($usuarios, true); ?>
 
-@extends('layouts.sidebar1')
+@extends('layouts.sidebar-usuarios')
 @section('title', 'Chamados')
 @section('content')
 

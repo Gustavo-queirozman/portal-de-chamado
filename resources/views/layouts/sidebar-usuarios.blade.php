@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <body style="background-color: #f1f2f1;">
         <div class="d-flex">
             <nav class="d-flex column bg-dark-green min-height-100vh" style="width: auto; position:fixed;">
@@ -64,11 +63,11 @@
                 padding-top20px padding-bottom20px" style="background-color: white; width:100%;">
                         <div style=" display:flex;">
                             @csrf
-                            <input type="text" name="codigoChamado" placeholder="Número do chamado..." class="form-control m-5px">
+                            <input type="text" name="palavraChave" placeholder="Palavra chave..." class="form-control m-5px">
                             <select name="tipoPesquisa" class="form-control m-5px">
-                                <option value="codigoChamado" selected>Número do chamado</option>
-                                <option value="Hardware">Hardware</option>
-                                <option value="Software">Software</option>
+                                <option value="Nome" selected>Nome</option>
+                                <option value="Email">E-mail</option>
+                                <option value="Usuario">Usuário</option>
                             </select>
                             <input type="date" name="dataInicial" class="form-control
                         m-5px">

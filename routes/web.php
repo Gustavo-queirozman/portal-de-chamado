@@ -33,10 +33,9 @@ Route::get('/mudarSenha', function () {
 Route::post('/mudarSenha', [App\Http\Controllers\autenticacao\MudarSenhaController::class, 'mudarSenha'])->name('mudarSenha');
 
 
-Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
 
 Route::middleware(['auth', 'user-access:adm'])->group(function () {
+    Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
     Route::prefix('adm')->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuarios', [App\Http\Controllers\UsuarioController::class, 'index']); //ok
@@ -59,6 +58,7 @@ Route::middleware(['auth', 'user-access:adm'])->group(function () {
 });
 
 Route::middleware(['auth', 'user-access:solicitante'])->group(function () {
+    Route::get('/solicitante', [App\Http\Controllers\ChamadoController::class, 'index']);
     Route::prefix('solicitante')->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
@@ -77,6 +77,7 @@ Route::middleware(['auth', 'user-access:solicitante'])->group(function () {
 });
 
 Route::middleware(['auth', 'user-access:atendente'])->group(function () {
+    Route::get('/atendente', [App\Http\Controllers\ChamadoController::class, 'index']);
     Route::prefix('atendente')->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
@@ -100,9 +101,8 @@ Route::get('logout', function () {
     return Redirect::to('/entrar');
 })->name('logout');
 
+Auth::routes();
 Auth::routes(['register' => false]);
-Auth::routes();
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);

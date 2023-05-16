@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class RespostaChamadoController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function index($idChamado)
     {
         $respostas = DB::table('respostachamado')

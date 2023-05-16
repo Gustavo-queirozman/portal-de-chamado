@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 class ChamadoController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('auth');
+    
+    }
+
     public function index(Request $request)
     {        
         $idUsuario = auth()->user()->id;

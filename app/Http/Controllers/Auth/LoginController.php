@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -20,8 +18,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    
-    protected $redirectTo = '/home';
 
     use AuthenticatesUsers;
 
@@ -30,14 +26,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
      *
      * @return void
-    */
-
+     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -47,24 +42,4 @@ class LoginController extends Controller
     {
         return 'username';
     }
-
-    public function showLoginForm()
-    {
-        return view('autenticacao.entrar');
-    }
-
-    /*
-    protected function authenticated($user)
-    {
-        $usuarioId = Auth::id();
-        $usuario = User::findOrFail($usuarioId);
-        
-        if ($usuario['type'] == 'administrador') {
-            $usuario['type'] = 'adm';
-        }
-
-        $rota = "/" . $usuario['type'];
-        return view($rota);
-    }
-    */
 }

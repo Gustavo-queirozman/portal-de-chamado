@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
-
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $usuarios = DB::table('users')->select('id', 'name', 'email', 'username')->get();
         return view('usuario.index', [

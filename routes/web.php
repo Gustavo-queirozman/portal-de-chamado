@@ -36,7 +36,7 @@ Route::post('/mudarSenha', [App\Http\Controllers\autenticacao\MudarSenhaControll
 Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'user-access:adm'])->group(function () {
     Route::prefix('adm')->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuarios', [App\Http\Controllers\UsuarioController::class, 'index']); //ok
@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'user-access:solicitante'])->group(function () {
     Route::prefix('solicitante')->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
@@ -76,7 +76,7 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'user-access:atendente'])->group(function () {
     Route::prefix('atendente')->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok

@@ -17,8 +17,6 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
-
-        
         /*
         $guards = empty($guards) ? [null] : $guards;
 
@@ -28,7 +26,6 @@ class RedirectIfAuthenticated
             }
         }*/
         
-
         return $next($request);
     }
 }

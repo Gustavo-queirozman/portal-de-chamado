@@ -42,4 +42,9 @@ class LoginController extends Controller
     {
         return 'username';
     }
+
+    protected function authenticated()
+    {
+        return redirect('/'. auth()->user()->type);
+    }
 }

@@ -6,7 +6,7 @@
         <div class="card-header"><b>Novo chamado</b></div>
 
         <div class="card-body">
-            <form action="/adm/chamado/{{optional($chamado)['id']}}" method="post">
+            <form action="/{{auth()->user()->type}}/chamado/{{optional($chamado)['id']}}" method="post">
                 @csrf
                 <!-- columns -->
                 <div class="form-group">
@@ -52,7 +52,7 @@
                 <!-- textarea -->
                 <div class="form-group">
                     <label for="descricao">Descrição*</label>
-                    <textarea class="form-control" rows="4" name="descricao" id="descricao" value="{{optional($chamado)['descricao']}}" required></textarea>
+                    <textarea class="form-control" rows="4" name="descricao" id="descricao"  required>{{ optional($chamado)['descricao']  }}</textarea>
                 </div>
 
                 <!-- columns -->
@@ -61,7 +61,7 @@
                         <div class="col-md-4 mb-3">
                             <!-- Input type text -->
                             <label for="status">Status</label>
-                            <input type="text" class="form-control" name="status" id="status" value="{{optional($chamado)['status']}}" disabled>
+                            <input type="text" class="form-control" name="status" id="status" value="{{ optional($chamado)['status'] }}" disabled>
                         </div>
 
                         <div class="col-md-4 mb-3">

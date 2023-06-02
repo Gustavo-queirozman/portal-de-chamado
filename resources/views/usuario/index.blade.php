@@ -26,11 +26,11 @@
     </div>
 
     <div style="display:flex">
-        <a href="/adm/usuario/{{$usuario['id']}}">
+        <a href="/{{auth()->user()->type}}/usuario/{{$usuario['id']}}">
             <img src="../../img/editar.png" alt="editar" style="width:25px;">
         </a>
 
-        <form action="/adm/usuario/{{$usuario['id']}}" method="post">
+        <form action="/{{auth()->user()->type}}/usuario/{{$usuario['id']}}" method="post">
             <button type="submit" type="submit" style="border:1px solid transparent; background-color:white;">
             <img src="../../img/delete.png" alt="deletar" style="width:25px">
             @method('Delete')

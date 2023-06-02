@@ -8,7 +8,8 @@
         @if(!empty($respostas))
         <div style="margin:20px; width:80%;">
             <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
-            <form action="/adm/resposta-chamado/{{$respostas[0]['id']}}" method="post" style="width:400px;">
+                
+            <form method="post" style="width:400px;">
                 @csrf
                 <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}"  style="height:300px; width:500px; margin:0px;">
                 <div >

@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Chamado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ChamadoController extends Controller
 {
-
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
-    
     }
 
     public function index(Request $request)
-    {        
+    {
         $idUsuario = auth()->user()->id;
         $chamado = new Chamado();
         $chamados = $chamado->where('fkUsuario', $idUsuario)->get();
@@ -36,25 +36,28 @@ class ChamadoController extends Controller
 
     public function create()
     {
-        return view('atendente.chamado.criar');
+        $type = auth()->user()->type;
+        return view("$type.chamado.criar");
     }
 
     public function store(Request $request)
     {
+        $idUsuario = auth()->user()->id;
         Chamado::create([
             'tipo' => $request->input('tipo'),
             'categoria' => $request->input('categoria'),
             'prioridade' => $request->input('prioridade'),
             'titulo' => $request->input('titulo'),
-            'descricao' => $request->input('descricao')
+            'descricao' => $request->input('descricao'),
+            'fkUsuario' => $idUsuario
         ]);
-
-        return view('atendente.home');
+       return redirect('/adm/chamados');
     }
-
 
     public function edit($idChamado)
     {
+        $chamado= Chamado::findOrFail($idChamado);
+   
         return view('chamado.chamado', [
             'chamado' => Chamado::findOrFail($idChamado)
         ]);
@@ -70,8 +73,7 @@ class ChamadoController extends Controller
         $chamado->descricao = $request->input('descricao');
         $chamado->status = $request->input('status');
         $chamado->update();
-        return view("chamado.chamado",  [
-            'chamado' => Chamado::findOrFail($idChamado)
-        ]);
+        $tipoUsuario = auth()->user()->type;
+        return redirect($tipoUsuario.'/chamado/'.$idChamado);
     }
 }

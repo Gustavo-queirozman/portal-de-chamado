@@ -32,8 +32,6 @@ Route::get('/mudarSenha', function () {
 });
 Route::post('/mudarSenha', [App\Http\Controllers\autenticacao\MudarSenhaController::class, 'mudarSenha'])->name('mudarSenha');
 
-
-
 Route::middleware(['auth', 'user-access:adm'])->group(function () {
     Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
     Route::prefix('adm')->group(function () {
@@ -43,6 +41,7 @@ Route::middleware(['auth', 'user-access:adm'])->group(function () {
         Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']); //ok
         Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
         Route::post('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']); //ok
+        
         Route::delete('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']); //ok
         Route::post('/pesquisa-usuario', [App\Http\Controllers\PesquisaUsuarioController::class, 'search']); //ok
 
@@ -62,7 +61,6 @@ Route::middleware(['auth', 'user-access:solicitante'])->group(function () {
     Route::prefix('solicitante')->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
-        Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']); //ok
         Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
         Route::post('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']); //ok
 
@@ -81,7 +79,6 @@ Route::middleware(['auth', 'user-access:atendente'])->group(function () {
     Route::prefix('atendente')->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
-        Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']); //ok
         Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
         Route::post('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']); //ok
 

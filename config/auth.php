@@ -2,6 +2,8 @@
 
 return [
 
+    'faliled' => 'These credential',
+    'password' => 'senha errada',
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults

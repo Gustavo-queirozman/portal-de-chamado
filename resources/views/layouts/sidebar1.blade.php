@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/app1.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>@yield('title')</title>
+    <title>Sidabar 1 - @yield('title')</title>
 </head>
 
 <body>
@@ -27,7 +27,13 @@
                     </li>
                     <br>
                     <li class="nav-item active">
-                        <a href="/{{auth()->user()->type}}/usuarios" class="nav-link" style="width:100%;">
+                        <a href="
+                        @if(auth()->user()->type == 'adm')
+                            /{{auth()->user()->type}}/usuarios
+                        @else
+                            /{{auth()->user()->type}}/usuario/{{auth()->user()->id}}
+                        @endif
+                        " class="nav-link" style="width:100%;">
                             <img src="../../img/perfil.png" alt="Perfil" style="width: 25px;">
                         </a>
                     </li>
@@ -60,7 +66,7 @@
                         <img src="https://www.unimed.coop.br/site/image/layout_set_logo?img_id=23230463&t=1681642264534" alt="logo" style="width:100px;">
                     </div>-->
 
-                    <form action="/adm/pesquisa-chamado" method="post" class="d-flex flex-center
+                    <form action="/{{auth()->user()->type}}/pesquisa-chamado" method="post" class="d-flex flex-center
                 padding-top20px padding-bottom20px" style="background-color: white; width:100%;">
                         <div style=" display:flex;">
                             @csrf

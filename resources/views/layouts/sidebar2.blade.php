@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/app1.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>@yield('title')</title>
+    <title>Sidebar 2 - @yield('title')</title>
 </head>
 
 <body>
@@ -20,13 +20,17 @@
                         <br><br>
                     </div>
                     <li class="nav-item active">
-                        <a href="adm/home" class="nav-link" style="width:100%;">
+                        <a href="/{{auth()->user()->type}}/home" class="nav-link" style="width:100%;">
                             <img src="../../img/home.png" alt="Inicio" style="width: 25px;">
                         </a>
                     </li>
                     <br>
                     <li class="nav-item active">
-                        <a href="/{{auth()->user()->type}}/usuarios" class="nav-link" style="width:100%;">
+                        <a href="@if(auth()->user()->type == 'adm')
+                            /{{auth()->user()->type}}/usuarios
+                        @else
+                            /{{auth()->user()->type}}/usuario/{{auth()->user()->id}}
+                        @endif" class="nav-link" style="width:100%;">
                             <img src="../../img/perfil.png" alt="Perfil" style="width: 25px;">
                         </a>
                     </li>
@@ -36,6 +40,14 @@
                             <img src="../../img/chamado.png" alt="Chamados" style="width: 25px;">
                         </a>
                     </li>
+                    <br>
+                    @if(auth()->user()->type == 'adm')
+                    <li>
+                        <a href="/{{auth()->user()->type}}/gestao" class="nav-link">
+                            <img src="../../img/gestao.png" alt="Gestão" style="width: 25px;">
+                        </a>
+                    </li>
+                    @endif
                     <br>
                     <li>
                         <a href="/logout" class="nav-link">

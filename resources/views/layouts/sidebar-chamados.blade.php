@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/app1.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>@yield('title')</title>
+    <title>sidebar chamados - yield('title')</title>
 </head>
 
 <body>
@@ -60,7 +60,7 @@
                         <img src="https://www.unimed.coop.br/site/image/layout_set_logo?img_id=23230463&t=1681642264534" alt="logo" style="width:100px;">
                     </div>-->
 
-                    <form action="/adm/pesquisa-usuario" method="post" class="d-flex flex-center
+                    <form action="/{{auth()->user()->type}}/pesquisa-usuario" method="post" class="d-flex flex-center
                 padding-top20px padding-bottom20px" style="background-color: white; width:100%;">
                         <div style=" display:flex;">
                             @csrf

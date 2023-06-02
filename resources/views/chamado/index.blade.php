@@ -34,7 +34,7 @@
             </div>
 
             <div>
-                <a href="/adm/chamado/{{$chamado['id']}}"><button style="border:0px; padding:10px; border-radius:7px; font-size:15px;">Informações</button></a>
+                <a href="/{{auth()->user()->type}}/resposta-chamado/{{$chamado['id']}}"><button style="border:0px; padding:10px; border-radius:7px; font-size:15px;">Informações</button></a>
             </div>
         </div>
     </div>

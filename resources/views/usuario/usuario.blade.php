@@ -10,12 +10,12 @@
     <div class="card">
         <div class="card-header" style="font-size:20px; background-color: #00995D; color:white;">Usuário</div>
         <div class="card-body">
-            <form action="/adm/usuario/{{ optional( $usuario)['id'] }}" method="post">
+            <form action="/{{auth()->user()->type}}/usuario/{{optional($usuario)['id']}}" method="post">
+                @csrf
                 <!-- Input type text -->
                 <div class="form-group">
-
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" id="name" value="{{optional($usuario)['name']}}" required>
+                    <input type="text" class="form-control" name="name" id="name" value="{{optional($usuario)['name']}}" required>
                 </div>
 
                 <!-- Input type text -->
@@ -38,9 +38,7 @@
                             <label for="senha">Senha</label>
                             <input type="text" class="form-control" name="password" id="senha" value="{{optional($usuario)['password']}}">
                         </div>
-
                     </div>
-
                 </div>
 
                 <!-- columns -->
@@ -63,12 +61,9 @@
                             <label>Anydesk</label>
                             <input type="text" class="form-control" name="codAnydesk" id="anydesk" value="{{optional($usuario)['codAnydesk']}}">
                         </div>
-
                     </div>
-
                 </div>
-
-                <button type="submit" class="btn btn-success" name="submit" id="submit">Salvar</button>
+                <button type="submit" class="btn success">Sistema</button>
             </form>
         </div>
     </div>

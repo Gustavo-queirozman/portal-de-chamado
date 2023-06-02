@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class RespostaChamadoController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
-    
+
     public function index($idChamado)
     {
         $respostas = DB::table('respostachamado')
@@ -35,7 +36,7 @@ class RespostaChamadoController extends Controller
             'fkChamado' => $idChamado,
             'resposta' => $request->input('resposta')
         ]);
-
-        return redirect("/adm/resposta-chamado/$idChamado");
+        $tipoUsuario = auth()->user()->type;
+        return redirect($tipoUsuario.'/resposta-chamado/'.$idChamado);
     }
 }

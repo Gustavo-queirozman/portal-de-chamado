@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class PesquisaChamadoController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
-    
-    public function search(Request $request){
+
+    public function search(Request $request)
+    {
         $idUsuario = auth()->user()->id;
         $codigoChamado = $request->input('codigoChamado');
         $tipoPesquisa = $request->input('tipoPesquisa');

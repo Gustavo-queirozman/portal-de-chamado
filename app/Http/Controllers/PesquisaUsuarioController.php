@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class PesquisaUsuarioController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -90,10 +91,10 @@ class PesquisaUsuarioController extends Controller
         }
 
         //7- pesquisar por intervalo de datas
-        if($dataInicial != null && $dataFinal != null && empty($palavraChave)){
+        if ($dataInicial != null && $dataFinal != null && empty($palavraChave)) {
             $usuarios = DB::table('users')
-            ->whereBetween('criadoDataHora', [$dataInicial, $dataFinal])
-            ->get();
+                ->whereBetween('criadoDataHora', [$dataInicial, $dataFinal])
+                ->get();
             return view('usuario.index',  [
                 'usuarios' => $usuarios
             ]);
@@ -104,6 +105,5 @@ class PesquisaUsuarioController extends Controller
         return view('usuario.index', [
             'usuarios' => $usuarios
         ]);
-        
     }
 }

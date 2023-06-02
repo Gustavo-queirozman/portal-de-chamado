@@ -11,7 +11,7 @@ class UsuarioController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-    
+
     public function index(){
         $usuarios = DB::table('users')->select('id', 'name', 'email', 'username')->get();
         return view('usuario.index', [
@@ -24,14 +24,12 @@ class UsuarioController extends Controller
             'usuario' => null
         ]);
     }
-    
+
     public function create(){
-        return view('adm.usuario.criar');
+        return view('usuario.usuario');
     }
 
-    public function store(Request $request)
-    {       
-        dd('rota store');
+    public function store(Request $request){
         $usuario = new User;
         $usuario->name = $request->input('name');
         $usuario->username = $request->input('username');
@@ -49,16 +47,14 @@ class UsuarioController extends Controller
         ]);
     }
 
-
     public function edit($idUsuario){
         return view('usuario.usuario', [
             'usuario' => User::findOrFail($idUsuario)
         ]);
     }
 
-    public function update(Request $request)
-    {
-        $usuario = User::findOrFail($request->input('id'));
+    public function update(Request $request, $idUsuario){
+        $usuario = User::findOrFail($idUsuario);
         $usuario->name = $request->input('name');
         $usuario->email = $request->input('email');
         $usuario->username = $request->input('username');
@@ -68,10 +64,8 @@ class UsuarioController extends Controller
         $usuario->ramal = $request->input('ramal');
         $usuario->codAnydesk = $request->input('codAnydesk');
         $usuario->save();
-        
-        return view('usuario.usuario',  [
-            'usuario' => User::findOrFail($request->input('id'))
-        ]);
+        $tipoUsuario = auth()->user()->type;
+        return redirect($tipoUsuario.'/usuarios');
     }
 
     public function delete($idUsuario){
@@ -79,12 +73,24 @@ class UsuarioController extends Controller
         return redirect('adm/usuarios');
     }
 
-    public function search(Request $request){
-        dd($request);
-        $usuario ='';
-        $nome = '';
-        $email = '';
-        $dataInicial = '';
-        $dataFinal = '';
+    
+    public function storeOrUpdate(Request $request){
+        dd('storeOrUpdate');
+        $usuario = User::findOrNew(auth()->user()->id); // Encontra o usuário existente ou cria um novo
+
+        $usuario->name = $request->input('name');
+        $usuario->username = $request->input('username');
+        $usuario->email = $request->input('email');
+        $usuario->password = $request->input('password');
+        $usuario->setor = $request->input('setor');
+        $usuario->ramal = $request->input('ramal');
+        $usuario->codAnydesk = $request->input('codAnydesk');
+        $usuario->type = $request->input('nivelPermissao');
+
+        $usuario->save(); // Salva o usuário no banco de dados
+        return view('usuario.usuario',  [
+            'usuario' => User::findOrFail($request->input('id'))
+        ]);
+       
     }
 }

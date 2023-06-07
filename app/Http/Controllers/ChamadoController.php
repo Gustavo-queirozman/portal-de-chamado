@@ -26,9 +26,6 @@ class ChamadoController extends Controller
 
     public function show()
     {
-        //$idUsuario = 1;
-        //$chamado = new Chamado();
-        //$chamados = $chamado->where('fkUsuario', $idUsuario)->get();
         return view('chamado.chamado',  [
             'chamado' =>  null
         ]);

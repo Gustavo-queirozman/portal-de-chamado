@@ -11,7 +11,13 @@
         <div class="flex column align-center w-m-260px m-5px  justify-center" style="border-radius: 5px; padding:5px; height:150px;  background-color:white;">
             <img src="../../img/usuarios.png" alt="gestão" style="width:25px">
             <br>
-            <h5 style="height:20px; color: #00995D;">Gerenciar usuários</h5>
+            <h5 style="height:20px; color: #00995D;">
+            @if(auth()->user()->type == 'adm')
+                Gerenciar usuários
+            @else
+                Meu perfil
+            @endif
+            </h5>
         </div>
     </a>
 
@@ -27,7 +33,7 @@
         <div class="flex column align-center w-m-260px m-5px  justify-center" style="border-radius: 5px; padding:5px; height:150px;  background-color:white;">
             <img src="../../img/chamado-verde.png" alt="chamados" style="width:25px">
             <br>
-            <h5 style="height:20px; color: #00995D;">Chamados</h5>
+            <h5 style="height:20px; color: #00995D;">Lista de chamados</h5>
         </div>
     </a>
 

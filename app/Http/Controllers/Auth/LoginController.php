@@ -45,6 +45,6 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        return redirect('/'. auth()->user()->type);
+        return redirect('/home');
     }
 }

@@ -26,7 +26,7 @@ class CadastroController extends Controller
 
         Mail::to($request->input('email'))->send(new SolicitarCadastroMail($mailData));
         $message = "Cadastro solicitado!";
-        return view("autenticacao.solicitarCadastro",['message' => $message]);
+        return view("auth.solicitarCadastro",['message' => $message]);
     }
 
 

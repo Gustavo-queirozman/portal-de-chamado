@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <body style="background-color: #f1f2f1;">
+    <body style="background-color: #f1f2f1; overflow: auto;">
         <div class="d-flex">
             <nav class="d-flex column bg-dark-green min-height-100vh" style="width: auto; position:fixed;">
                 <ul style="list-style: none; padding:0px;">
@@ -65,7 +65,7 @@
 
                     <br><br><br>
                 </header>
-                <div class="d-flex column" style="width:100%">
+                <div class="d-flex column" style="width:100%; ">
                     @yield('content')
                 </div>
             </div>

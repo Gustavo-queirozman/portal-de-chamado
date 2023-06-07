@@ -13,7 +13,7 @@ class CadastroController extends Controller
 {
     public function solicitarCadastro(Request $request)
     {
-
+        
         $mailData = [
             'title' => 'Cadastro no portal chamados',
             'body' => 'Solicito por meio desse email o cadastro no portal chamados..',
@@ -25,9 +25,7 @@ class CadastroController extends Controller
         ];
 
         Mail::to($request->input('email'))->send(new SolicitarCadastroMail($mailData));
-
         $message = "Cadastro solicitado!";
-
         return view("autenticacao.solicitarCadastro",['message' => $message]);
     }
 

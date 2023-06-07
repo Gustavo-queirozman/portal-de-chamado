@@ -51,18 +51,10 @@
                             </button>
                             <br><br>
                             <div class="d-flex justify-content-center align-items-center text-center">
-    
-                                @if (Route::has('password.request'))
-                                <a style="text-decoration:none; color:black;" class="btn btn-link" href="{{ route('esqueciSenha') }}">
-                                    {{ __('Esqueci minha senha') }}
-                                </a>
-                                @endif
-                                <span>|</span>
-                                @if (Route::has('password.request'))
-                                <a style="text-decoration:none; color:black;" class="btn btn-link" href="{{ route('solicitarCadastro') }}">
-                                    {{ __('Solicitar cadastro') }}
-                                </a>
-                                @endif
+                                <a style="text-decoration:none; color:black;" href="/password/reset">Esqueci minha senha</a>
+                                <span>&nbsp;|&nbsp;</span>
+                                <a style="text-decoration:none; color:black;" href="/register">Solicitar cadastro</a>
+                                
                             </div>
                         </div>
                     </form>

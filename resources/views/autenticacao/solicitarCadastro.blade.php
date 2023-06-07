@@ -70,9 +70,9 @@
                             ?>
                             <div class="d-flex justify-content-center align-items-cente text-center">
                                 <p>
-                                    <a href="/esqueciSenha" class="text-decoration-none text-dark">Esqueci minha
+                                    <a href="/password/reset" class="text-decoration-none text-dark">Esqueci minha
                                         senha </a>
-                                    <a href="/entrar" class="text-decoration-none text-dark">| Entrar</a>
+                                    <a href="/login" class="text-decoration-none text-dark">| Entrar</a>
                                 </p>
                             </div>
                         </div>

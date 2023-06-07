@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -11,8 +12,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        dd($request);
+        $user = User::findByEmail($email);
+        $userType = auth()->user();
+        dd($userType);
         $this->middleware('auth');
     }
 
@@ -26,3 +31,5 @@ class HomeController extends Controller
         return view('home.index');
     }
 }
+
+

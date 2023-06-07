@@ -35,6 +35,5 @@ class EsqueciSenhaController extends Controller
         
         $message = "Enviado com sucesso!";
         return view('autenticacao.esqueciSenha', ['message' => $message]);
-        
     }
 }

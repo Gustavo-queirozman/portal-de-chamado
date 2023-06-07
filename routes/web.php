@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('autenticacao.entrar');
 });
-Route::get('/login', function () {
-    return view('autenticacao.entrar');
-});
-Route::get('/entrar', function () {
-    return view('autenticacao.entrar');
-});
 
 #esqueci senha
 Route::get('/esqueciSenha', function () {
@@ -24,12 +18,13 @@ Route::post('/esqueciSenha', [App\Http\Controllers\autenticacao\EsqueciSenhaCont
 Route::get('/solicitarCadastro', function () {
     return view('autenticacao.solicitarCadastro');
 });
-Route::post('/solicitarCadastro', [App\Http\Controllers\autenticacao\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
 
 #mudar senha
 Route::get('/mudarSenha', function () {
     return view('autenticacao.mudarSenha');
 });
+
+
 Route::post('/mudarSenha', [App\Http\Controllers\autenticacao\MudarSenhaController::class, 'mudarSenha'])->name('mudarSenha');
 
 Route::middleware(['auth', 'user-access:adm'])->group(function () {
@@ -95,11 +90,16 @@ Route::middleware(['auth', 'user-access:atendente'])->group(function () {
 Route::get('logout', function () {
     auth()->logout();
     Session()->flush();
-    return Redirect::to('/entrar');
+    return Redirect::to('/login');
 })->name('logout');
 
 Auth::routes();
-Auth::routes(['register' => false]);
+
+Route::get('/register', function () {
+    return view('autenticacao.solicitarCadastro');
+});
+Route::post('/register', [App\Http\Controllers\autenticacao\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);

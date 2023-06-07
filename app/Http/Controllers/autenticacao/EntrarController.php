@@ -10,7 +10,7 @@ class EntrarController extends Controller
 {
 
     public function index(){
-        return view('autenticacao.entrar');
+        return view('auth.login');
     }
 
     public function entrar(Request $request)

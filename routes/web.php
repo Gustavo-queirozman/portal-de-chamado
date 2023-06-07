@@ -98,7 +98,7 @@ Auth::routes();
 Route::get('/register', function () {
     return view('autenticacao.solicitarCadastro');
 });
-Route::post('/register', [App\Http\Controllers\autenticacao\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
+Route::post('/register', [App\Http\Controllers\Auth\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

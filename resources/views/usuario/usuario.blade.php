@@ -63,6 +63,16 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <div class="form-row align-items-center">
+                        <div class="col-md-4 mb-3">
+                            <!-- Input type text -->
+                            <label>Nível de permissão</label>
+                            <input type="text" class="form-control" name="type" id="type" value="{{optional($usuario)['type']}}">
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn success">Sistema</button>
             </form>
         </div>

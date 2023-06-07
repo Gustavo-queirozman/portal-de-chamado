@@ -14,10 +14,6 @@ class HomeController extends Controller
      */
     public function __construct(Request $request)
     {
-        dd($request);
-        $user = User::findByEmail($email);
-        $userType = auth()->user();
-        dd($userType);
         $this->middleware('auth');
     }
 

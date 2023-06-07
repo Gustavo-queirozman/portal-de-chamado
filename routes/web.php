@@ -5,27 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('autenticacao.entrar');
-});
-
-#esqueci senha
-Route::get('/esqueciSenha', function () {
-    return view('autenticacao.esqueciSenha');
-});
-Route::post('/esqueciSenha', [App\Http\Controllers\autenticacao\EsqueciSenhaController::class, 'enviarNovaSenhaNoEmail'])->name('esqueciSenha');
-#solicitar cadastro
-Route::get('/solicitarCadastro', function () {
-    return view('autenticacao.solicitarCadastro');
-});
-
-#mudar senha
-Route::get('/mudarSenha', function () {
-    return view('autenticacao.mudarSenha');
-});
-
-
-Route::post('/mudarSenha', [App\Http\Controllers\autenticacao\MudarSenhaController::class, 'mudarSenha'])->name('mudarSenha');
 
 Route::middleware(['auth', 'user-access:adm'])->group(function () {
     Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
@@ -98,8 +77,6 @@ Auth::routes();
 Route::get('/register', function () {
     return view('autenticacao.solicitarCadastro');
 });
+
 Route::post('/register', [App\Http\Controllers\Auth\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);

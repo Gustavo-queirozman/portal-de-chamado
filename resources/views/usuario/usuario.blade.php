@@ -73,7 +73,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn success">Sistema</button>
+                
+                <button type="button" class="btn btn-success">Salvar</button>
             </form>
         </div>
     </div>

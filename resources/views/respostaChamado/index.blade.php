@@ -8,14 +8,18 @@
         @if(!empty($respostas))
         <div style="margin:20px; width:80%;">
             <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
-                
+            
             <form method="post" style="width:400px;">
                 @csrf
                 <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}"  style="height:300px; width:500px; margin:0px;">
                 <div >
                     <textarea name="resposta" id="editor" placeholder="Responder.." style="height:300px; width:500px; margin:0px;"></textarea>
                 </div>
-                <input type="text" name="" value="{{$respostas[0]['id']}}">
+                <select name="status" id="status">
+                    <option value="">Aberto</option>
+                    <option value="">Em espera</option>
+                    <option value="">Fechado</option>
+                </select>
                 <input type="submit" value="Enviar">
             </form>
             <br>
@@ -46,7 +50,6 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
 <script>
     ClassicEditor
-    
         .create(document.querySelector('#editor'))
         .catch(error => {
             console.error(error);

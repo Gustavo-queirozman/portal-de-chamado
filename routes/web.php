@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'user-access:adm'])->group(function () {
     Route::get('/adm', [App\Http\Controllers\ChamadoController::class, 'index']);
     Route::prefix('adm')->group(function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show'])->name('home');
+
         Route::get('/usuarios', [App\Http\Controllers\UsuarioController::class, 'index']); //ok
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
         Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']); //ok
         Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
         Route::post('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']); //ok
-        
+
         Route::delete('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']); //ok
         Route::post('/pesquisa-usuario', [App\Http\Controllers\PesquisaUsuarioController::class, 'search']); //ok
 
@@ -33,7 +34,8 @@ Route::middleware(['auth', 'user-access:adm'])->group(function () {
 Route::middleware(['auth', 'user-access:solicitante'])->group(function () {
     Route::get('/solicitante', [App\Http\Controllers\ChamadoController::class, 'index']);
     Route::prefix('solicitante')->group(function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show'])->name('home');
+
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
         Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
         Route::post('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']); //ok
@@ -51,7 +53,8 @@ Route::middleware(['auth', 'user-access:solicitante'])->group(function () {
 Route::middleware(['auth', 'user-access:atendente'])->group(function () {
     Route::get('/atendente', [App\Http\Controllers\ChamadoController::class, 'index']);
     Route::prefix('atendente')->group(function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show']);
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'show'])->name('home');
+
         Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'show']); //ok
         Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'edit']); //ok
         Route::post('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']); //ok

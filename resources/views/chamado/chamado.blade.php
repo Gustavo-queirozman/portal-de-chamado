@@ -13,9 +13,9 @@
                     <div class="form-row align-items-center" style="display:flex;">
                         <div class="col-md-4 mb-3" style="display:flex; flex-direction:column;">
                             <!-- select -->
-                            <label for="tipo">Tipo*</label>
+                            <label for="tipo">Categoria*</label>
                             <select class="custom-select" name="tipo" id="tipo">
-                                <option value="{{optional($chamado)['tipo']}}">{{optional($chamado)['tipo']}}</option>
+                                <option value="{{optional($chamado)['categoria']}}">{{optional($chamado)['categoria']}}</option>
                                 <option value="Software">Software</option>
                                 <option value="Hardware">Hardware</option>
                             </select>
@@ -23,9 +23,9 @@
 
                         <div class="col-md-4 mb-3" style="display:flex; flex-direction:column;">
                             <!-- select -->
-                            <label for="categoria">Categoria*</label>
-                            <select class="custom-select" name="categoria" id="categoria">
-                                <option value="{{optional($chamado)['categoria']}}" selected>{{optional($chamado)['categoria']}}</option>
+                            <label for="subcategoria">Subcategoria*</label>
+                            <select class="custom-select" name="subcategoria" id="subcategoria">
+                                <option value="{{optional($chamado)['subcategoria']}}" selected>{{optional($chamado)['subcategoria']}}</option>
                                 <option value="sd">s</option>
                             </select>
                         </div>
@@ -81,7 +81,6 @@
                 <div>
                     <input type="submit" value="Salvar" class="btn btn btn-success">
                 </div>
-
             </form>
         </div>
     </div>

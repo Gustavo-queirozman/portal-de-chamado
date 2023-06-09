@@ -7,10 +7,7 @@
 <br>
 @foreach ($usuarios as $usuario)
 <div style="width:100%; display:flex; justify-content:center; margin:0px; align-items:center">
-    <div class="d-flex justify-between" style="justify-content: space-around;
-                                align-items:center; background-color: white; width:700px; padding: 20px; border-radius:7px;">
-
-
+    <div class="d-flex justify-between" style="justify-content: space-around; align-items:center; background-color: white; width:700px; padding: 20px; border-radius:7px;">
     <div class="d-flex column" >
         <ul class="d-flex" style="padding:0px; margin-bottom:0px; list-style:none" class="list-style-none">
             <li style="margin-right:20px">

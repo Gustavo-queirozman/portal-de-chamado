@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Chamado extends Model
 {
     protected $table = 'chamado';
-    protected $fillable = ['tipo', 'categoria', 'prioridade', 'titulo', 'descricao'];
+    protected $fillable = ['tipo', 'categoria', 'subcategoria', 'prioridade', 'titulo', 'descricao', 'atendente', 'fkUsuario'];
     public $timestamps = false;
 }

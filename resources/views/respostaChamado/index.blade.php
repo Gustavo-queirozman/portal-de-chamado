@@ -8,19 +8,24 @@
         @if(!empty($respostas))
         <div style="margin:20px; width:80%;">
             <h1 style="font-size:20px;">{{$respostas[0]['titulo']}}</h1>
-            
-            <form method="post" style="width:400px;">
+
+            <form method="POST">
                 @csrf
-                <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}"  style="height:300px; width:500px; margin:0px;">
-                <div >
-                    <textarea name="resposta" id="editor" placeholder="Responder.." style="height:300px; width:500px; margin:0px;"></textarea>
+                <div style="display:flex">
+                    <input name="idChamado" type="hidden" value="{{$respostas[0]['id']}}" style="height:300px; width:500px; margin:0px;">
+                    <div>
+                        <textarea name="resposta" id="editor" placeholder="Responder.."column="20" row="20"></textarea>
+                    </div>
+
+                    <div style="display:flex; flex-direction:column;">
+                        <select name="status" id="status">
+                            <option value="Aberto">Aberto</option>
+                            <option value="Em espera">Em espera</option>
+                            <option value="Fechado">Fechado</option>
+                        </select>
+                        <input type="submit" value="Enviar">
+                    </div>
                 </div>
-                <select name="status" id="status">
-                    <option value="">Aberto</option>
-                    <option value="">Em espera</option>
-                    <option value="">Fechado</option>
-                </select>
-                <input type="submit" value="Enviar">
             </form>
             <br>
         </div>

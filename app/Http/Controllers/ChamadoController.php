@@ -39,21 +39,45 @@ class ChamadoController extends Controller
 
     public function store(Request $request)
     {
+        //id do usuário
         $idUsuario = auth()->user()->id;
+
+        //tipo de chamado
+        if($request->input('categoria') == "Sistemas"){
+            $tipoChamado = "Software";
+        }   
+        if($request->input('categoria') == "Impressoras"){
+            $tipoChamado = "Hardware";
+        }  
+        if($request->input('categoria') == "Telefonia"){
+            $tipoChamado = "Hardware";
+        }    
+        if($request->input('categoria') == "Máquina"){
+            $tipoChamado = "Hardware";
+        }  
+
+        //atendente
+        if(auth()->user()->type == "atendente"){
+            $atendente = auth()->user()->username;
+        }
+        
         Chamado::create([
-            'tipo' => $request->input('tipo'),
+            'tipo' => $tipoChamado,
             'categoria' => $request->input('categoria'),
+            'subcategoria' => $request->input('subcategoria'),
             'prioridade' => $request->input('prioridade'),
             'titulo' => $request->input('titulo'),
             'descricao' => $request->input('descricao'),
+            'atendente' => $atendente,
             'fkUsuario' => $idUsuario
         ]);
-       return redirect('/adm/chamados');
+        $tipoUsuario = auth()->user()->type;
+       return redirect("/$tipoUsuario/chamados");
     }
 
     public function edit($idChamado)
     {
-        $chamado= Chamado::findOrFail($idChamado);
+        $chamado = Chamado::findOrFail($idChamado);
    
         return view('chamado.chamado', [
             'chamado' => Chamado::findOrFail($idChamado)
@@ -62,6 +86,7 @@ class ChamadoController extends Controller
 
     public function update(Request $request, $idChamado)
     {
+        dd('dfdsfsdf');
         $chamado = Chamado::findOrFail($idChamado);
         $chamado->tipo = $request->input('tipo');
         $chamado->categoria = $request->input('categoria');

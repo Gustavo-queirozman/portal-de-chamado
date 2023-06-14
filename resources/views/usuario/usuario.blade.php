@@ -47,7 +47,19 @@
                         <div class="col-md-4 mb-3">
                             <!-- Input type text -->
                             <label for="setor">Setor</label>
-                            <input type="text" class="form-control" name="setor" id="setor" value="{{optional($usuario)['setor']}}">
+                            <select class="form-select" aria-label="Default select example" name="setor">
+                                <option value="{{optional($usuario)['setor']}}">{{optional($usuario)['setor']}}</option>
+                                <option value="Atendimento">Atendimento</option>
+                                <option value="Atualização">Atualização</option>
+                                <option value="Cadastro">Cadastro</option>
+                                <option value="Diretoria">Diretoria</option>
+                                <option value="Faturamento">Faturamento</option>
+                                <option value="Financeiro">Financeiro</option>
+                                <option value="Gerencia">Gerencia</option>
+                                <option value="SAC">SAC</option>
+                                <option value="TI">TI</option>
+                                <option value="Vendas">Vendas</option>
+                            </select>
                         </div>
 
                         <div class="col-md-4 mb-3">
@@ -64,15 +76,23 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <div class="form-row align-items-center">
-                        <div class="col-md-4 mb-3">
-                            <!-- Input type text -->
-                            <label>Nível de permissão</label>
-                            <input type="text" class="form-control" name="type" id="type" value="{{optional($usuario)['type']}}">
+                <!--colocar nivel de usuario se fr igual a adm mostrar-->
+                @if(auth()->user()->type == 'adm')
+                    <div class="form-group">
+                        <div class="form-row align-items-center">
+                            <div class="col-md-4 mb-3">
+                                <!-- Input type text -->
+                                <label>Nível de permissão</label>
+                                <select name="type"  class="form-control">
+                                    <option value="{{optional($usuario)['type']}}">{{optional($usuario)['type']}}</option>
+                                    <option value="atendente">atendente</option>
+                                    <option value="adm">adm</option>
+                                    <option value="atendente">solicitante</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 
                 <button type="button" class="btn btn-success">Salvar</button>
             </form>

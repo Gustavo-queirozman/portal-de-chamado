@@ -54,6 +54,7 @@ class UsuarioController extends Controller
     }
 
     public function update(Request $request, $idUsuario){
+        dd('dsfdsf');
         $usuario = User::findOrFail($idUsuario);
         $usuario->name = $request->input('name');
         $usuario->email = $request->input('email');

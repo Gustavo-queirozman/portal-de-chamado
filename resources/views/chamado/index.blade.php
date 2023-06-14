@@ -20,7 +20,7 @@
                     </li>
                     <li style="margin-right:20px">
                         <img src="../img/localizacao.png" alt="tempo" style="width:15px">
-                        <span>Suporte TI</span>
+                        <span>{{$chamado['setor']}}</span>
                     </li>
                     <li style="margin-right:20px">
                         <img src="../img/status.png" alt="tempo" style="width:15px">

@@ -81,5 +81,7 @@ Route::get('/register', function () {
     return view('auth.solicitarCadastro');
 });
 
+// Redireciona a raiz do projeto para a rota de login
+Route::redirect('/', '/login');
 Route::post('/register', [App\Http\Controllers\Auth\CadastroController::class, 'solicitarCadastro'])->name('solicitarCadastro');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'show'])->name('home');

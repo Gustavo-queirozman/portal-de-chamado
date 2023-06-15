@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chamado;
 use App\Models\RespostaChamado;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +24,6 @@ class RespostaChamadoController extends Controller
             ->orderBy('titulo')
             ->orderByDesc('dataHora')
             ->get();
-
         return view('respostaChamado.index',  [
             'respostas' => $respostas
         ]);
@@ -29,6 +31,15 @@ class RespostaChamadoController extends Controller
 
     public function store(Request $request)
     {
+        //modificar data de concluido
+        //mudar status
+        $chamado = Chamado::findOrFail($request->input('idChamado'));
+        $chamado->status = $request->input('status');
+        if( $request->input('status') == "Fechado"){
+            $chamado->concluidoDataHora = date("Y-m-d H:m:s");
+        }
+        $chamado->save();
+
         $idUsuario = 1;
         $idChamado = $request->input('idChamado');
         RespostaChamado::create([

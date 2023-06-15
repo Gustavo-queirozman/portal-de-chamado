@@ -47,10 +47,29 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="display:flex;">
                     <!-- Input type text -->
-                    <label for="titulo">Titulo*</label>
-                    <input type="text" class="form-control" name="titulo" id="titulo" value="{{ optional($chamado)['titulo'] }}" required>
+                    <div class="col-md-8 mb-3" style="display:flex; flex-direction:column;">
+                        <label for="titulo">Titulo*</label>
+                        <input type="text" class="form-control" name="titulo" id="titulo" value="{{ optional($chamado)['titulo'] }}" required>
+                    </div>
+                    <div class="col-md-4 mb-3" style="display:flex; flex-direction:column;">
+                        <!-- select -->
+                        <label for="tipo">Setor de Atendimento*</label>
+                        <select class="form-select" aria-label="Default select example" name="setor">
+                            <option selected>{{auth()->user()->setor}}</option>
+                            <option value="Atendimento">Atendimento</option>
+                            <option value="Atualização">Atualização</option>
+                            <option value="Cadastro">Cadastro</option>
+                            <option value="Diretoria">Diretoria</option>
+                            <option value="Faturamento">Faturamento</option>
+                            <option value="Financeiro">Financeiro</option>
+                            <option value="Gerencia">Gerencia</option>
+                            <option value="SAC">SAC</option>
+                            <option value="TI">TI</option>
+                            <option value="Vendas">Vendas</option>
+                        </select>
+                    </div>
                 </div>
 
                 <!-- textarea -->

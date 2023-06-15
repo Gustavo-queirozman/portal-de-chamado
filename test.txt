@@ -1,0 +1,17 @@
+SELECT 
+    status,
+    CASE
+        WHEN TIMESTAMPDIFF(HOUR, criadoDataHora, concluidoDataHora) >= 24 THEN
+            CONCAT(TIMESTAMPDIFF(DAY, criadoDataHora, concluidoDataHora), 
+            CASE
+                WHEN TIMESTAMPDIFF(DAY, criadoDataHora, concluidoDataHora) > 1 THEN ' dias'
+                ELSE ' dia'
+            END)
+        ELSE
+            CONCAT(TIMESTAMPDIFF(HOUR, criadoDataHora, concluidoDataHora),
+            CASE
+                WHEN TIMESTAMPDIFF(HOUR, criadoDataHora, concluidoDataHora) != 1 THEN ' horas'
+                ELSE ' hora'
+            END)
+    END AS diferenca
+FROM chamado;

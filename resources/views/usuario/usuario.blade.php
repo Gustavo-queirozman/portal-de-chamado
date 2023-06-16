@@ -94,7 +94,8 @@
                     </div>
                 @endif
                 
-                <button type="button" class="btn btn-success">Salvar</button>
+                <input type="submit" value="Salvar">
+                <!--<button type="button" class="btn btn-success">Salvar</button>-->
             </form>
         </div>
     </div>

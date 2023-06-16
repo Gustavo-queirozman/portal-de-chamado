@@ -58,6 +58,7 @@ class ChamadoController extends Controller
 
     public function store(Request $request)
     {
+
         //id do usuário
         $idUsuario = auth()->user()->id;
 
@@ -105,7 +106,6 @@ class ChamadoController extends Controller
 
     public function update(Request $request, $idChamado)
     {
-        dd('dfdsfsdf');
         $chamado = Chamado::findOrFail($idChamado);
         $chamado->tipo = $request->input('tipo');
         $chamado->categoria = $request->input('categoria');

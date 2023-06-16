@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -30,11 +31,13 @@ class UsuarioController extends Controller
     }
 
     public function store(Request $request){
+        dd('sore');
         $usuario = new User;
         $usuario->name = $request->input('name');
         $usuario->username = $request->input('username');
         $usuario->email = $request->input('email');
-        $usuario->password = $request->input('password');
+        $usuario->password = bcrypt($request->input('password'));
+        dd($request->input('password'));
         $usuario->setor = $request->input('setor');
         $usuario->ramal = $request->input('ramal');
         $usuario->codAnydesk = $request->input('codAnydesk');
@@ -54,12 +57,12 @@ class UsuarioController extends Controller
     }
 
     public function update(Request $request, $idUsuario){
-        dd('dsfdsf');
+     
         $usuario = User::findOrFail($idUsuario);
         $usuario->name = $request->input('name');
         $usuario->email = $request->input('email');
         $usuario->username = $request->input('username');
-        $usuario->password = $request->input('password');
+        $usuario->password = Hash::make($request->input('password'));
         $usuario->type = $request->input('type');
         $usuario->setor = $request->input('setor');
         $usuario->ramal = $request->input('ramal');
@@ -74,7 +77,7 @@ class UsuarioController extends Controller
         return redirect('adm/usuarios');
     }
 
-    
+    /*
     public function storeOrUpdate(Request $request){
         dd('storeOrUpdate');
         $usuario = User::findOrNew(auth()->user()->id); // Encontra o usuário existente ou cria um novo
@@ -92,6 +95,5 @@ class UsuarioController extends Controller
         return view('usuario.usuario',  [
             'usuario' => User::findOrFail($request->input('id'))
         ]);
-       
-    }
+    }*/
 }

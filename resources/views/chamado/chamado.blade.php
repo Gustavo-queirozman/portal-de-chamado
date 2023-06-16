@@ -19,10 +19,10 @@
                             <label for="tipo">Categoria*</label>
                             <select class="form-control custom-select " name="categoria" id="categoria">
                                 <option value="{{optional($chamado)['categoria']}}">{{optional($chamado)['categoria']}}</option>
-                                <option value="Sistemas">Sistemas</option>
-                                <option value="Impressoras">Impressoras</option>
-                                <option value="Telefonia">Telefonia</option>
-                                <option value="Máquina">Máquina</option>
+                                <option value="1">Sistemas</option>
+                                <option value="2">Impressoras</option>
+                                <option value="3">Telefonia</option>
+                                <option value="4">Máquina</option>
                             </select>
                         </div>
 
@@ -121,7 +121,7 @@
     $(document).ready(function() {
         // Mapear as categorias para as subcategorias correspondentes
         var categorias = {
-            Sistemas: ['GIU', 'Cardio', 'Piramide', 'Hilum', 'Atena', 'MKSaúde', 'Service Desk', 'Portal Sin', 'Cardio Web', 'Serviços de E-mai', 'PAI(Plataforma Adinistrativa Integrada)', 'Monitoramento Assistencial', 'Site Institucional', 'Área Restrita', 'Segunda Via de Boletos', 'Área do Beneficiário', 'Canal do Beneficiário', 'Painel BI', 'WSD Intercâmbio', 'Outro'],
+            1: ['GIU', 'Cardio', 'Piramide', 'Hilum', 'Atena', 'MKSaúde', 'Service Desk', 'Portal Sin', 'Cardio Web', 'Serviços de E-mai', 'PAI(Plataforma Adinistrativa Integrada)', 'Monitoramento Assistencial', 'Site Institucional', 'Área Restrita', 'Segunda Via de Boletos', 'Área do Beneficiário', 'Canal do Beneficiário', 'Painel BI', 'WSD Intercâmbio', 'Outro'],
             2: ['Troca Tonner/Cilindro', 'Atolamento/Travamento', 'Falha ao Imprimir/Escanear', 'Outro'],
             3: ['Troncos Ocupados', 'Falha em Ligações', 'Adicionar Novo Ponto/Ramal', 'Outro'],
             4: ['Travamento', 'Lentidão', 'Auxilio com programas/sites', 'Periféricos', 'Monitor', 'Outro']

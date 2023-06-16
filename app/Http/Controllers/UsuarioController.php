@@ -31,13 +31,12 @@ class UsuarioController extends Controller
     }
 
     public function store(Request $request){
-        dd('sore');
         $usuario = new User;
         $usuario->name = $request->input('name');
         $usuario->username = $request->input('username');
         $usuario->email = $request->input('email');
-        $usuario->password = bcrypt($request->input('password'));
-        dd($request->input('password'));
+        $usuario->password = Hash::make($request->input('password'));
+        //dd($request->input('password'));
         $usuario->setor = $request->input('setor');
         $usuario->ramal = $request->input('ramal');
         $usuario->codAnydesk = $request->input('codAnydesk');

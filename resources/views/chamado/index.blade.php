@@ -1,6 +1,8 @@
+
 @extends('layouts.sidebar1')
 @section('title', 'Chamados')
 @section('content')
+
 <ul id="scroll" style="display:flex; flex-direction:column; align-items:center; list-style:none;">
 <br>
     @foreach ($chamados as $chamado)
@@ -26,10 +28,7 @@
                         <img src="../img/status.png" alt="tempo" style="width:15px">
                         <span>{{$chamado['status']}}</span>
                     </li>
-                    <li style="margin-right:20px">
-                        <img src="../img/relogio.png" alt="tempo" style="width:15px">
-                        <span>há 4 Dias</span>
-                    </li>
+                   
                 </ul>
             </div>
 

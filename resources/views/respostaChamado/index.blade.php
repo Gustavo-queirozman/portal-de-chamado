@@ -15,7 +15,7 @@
                     <div class="form-row align-items-center" style="display:flex;">
                         @if(auth()->user()->type == 'adm' or auth()->user()->type == 'atendente')
                             <div class="col-md-4 mb-3">
-                                <!--<label for="status">Status</label>-->
+                                <label for="status">Status</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="" selected>Selectione o status...</option>
                                     <option value="Aberto">Aberto</option>

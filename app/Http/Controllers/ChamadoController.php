@@ -52,13 +52,14 @@ class ChamadoController extends Controller
 
     public function create()
     {
+        dd('create');
         $type = auth()->user()->type;
         return view("$type.chamado.criar");
     }
 
     public function store(Request $request)
     {
-
+        dd('store');
         //id do usuário
         $idUsuario = auth()->user()->id;
 

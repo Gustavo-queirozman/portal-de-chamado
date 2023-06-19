@@ -30,7 +30,7 @@
                             <!-- select -->
                             <label for="subcategoria">Subcategoria*</label>
                             <select class="form-control custom-select" name="subcategoria" id="subcategoria">
-                            <option value="{{optional($chamado)['subcategoria']}}">{{optional($chamado)['subcategoria']}}</option>
+                                <option value="{{optional($chamado)['subcategoria']}}">{{optional($chamado)['subcategoria']}}</option>
                             </select>
                         </div>
 
@@ -75,8 +75,8 @@
                 <!-- textarea -->
                 <div class="form-group">
                     <label for="descricao">Descrição*</label>
-                    <!--<textarea class="form-control" rows="4" name="descricao" id="descricao"  required>{{ optional($chamado)['descricao']  }}</textarea>-->
-                    <textarea name="descricao" id="editor" column="20" rows="4" required>{{ optional($chamado)['descricao']  }}</textarea>
+                    <textarea class="form-control" rows="4" name="descricao" id="descricao"  required>{{ optional($chamado)['descricao']  }}</textarea>
+                    <!--<textarea name="descricao" id="editor" column="20" rows="4" required>{{ optional($chamado)['descricao']  }}</textarea>-->
                 </div>
 
                 <!-- columns 

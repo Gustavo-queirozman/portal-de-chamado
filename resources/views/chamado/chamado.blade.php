@@ -30,7 +30,7 @@
                             <!-- select -->
                             <label for="subcategoria">Subcategoria*</label>
                             <select class="form-control custom-select" name="subcategoria" id="subcategoria">
-
+                            <option value="{{optional($chamado)['subcategoria']}}">{{optional($chamado)['subcategoria']}}</option>
                             </select>
                         </div>
 

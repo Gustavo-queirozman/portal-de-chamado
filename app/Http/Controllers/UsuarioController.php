@@ -36,11 +36,15 @@ class UsuarioController extends Controller
         $usuario->username = $request->input('username');
         $usuario->email = $request->input('email');
         $usuario->password = Hash::make($request->input('password'));
-        //dd($request->input('password'));
         $usuario->setor = $request->input('setor');
         $usuario->ramal = $request->input('ramal');
         $usuario->codAnydesk = $request->input('codAnydesk');
-        $usuario->type = $request->input('nivelPermissao');
+        $usuario->type = $request->input('type');
+        $existingUser = User::where('email', $usuario->email)->first();
+        if ($existingUser) {
+            return redirect()->back()->with('usuario.usuario', 'Este e-mail já está cadastrado.');
+        }
+
         $usuario->save();
 
         $usuarios = User::all();

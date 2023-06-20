@@ -57,27 +57,27 @@ class ChamadoController extends Controller
         return view("$type.chamado.criar");
     }*/
 
-    public function store(Request $request, $idUsuario)
+    public function store(Request $request)
     {
         //id do usuário
-        //$idUsuario = auth()->user()->id;
+        $idUsuario = auth()->user()->id;
 
         //tipo de chamado
-        if ($request->input('categoria') == 1) {
+        if ($request->input('categoria') == "1" or $request->input('categoria') == "Sistemas") {
             $tipoChamado = "Software";
-            $subCategoria = "Sistemas";
+            $categoria = "Sistemas";
         }
-        if ($request->input('categoria') == '2') {
+        if ($request->input('categoria') == "2" or $request->input('categoria') == "Impressoras") {
             $tipoChamado = "Hardware";
-            $subCategoria = "Impressoras";
+            $categoria = "Impressoras";
         }
-        if ($request->input('categoria') == '3') {
+        if ($request->input('categoria') == "3" or $request->input('categoria') == "Telefonia") {
             $tipoChamado = "Hardware";
-            $subCategoria = "Telefonia";
+            $categoria = "Telefonia";
         }
-        if ($request->input('categoria') == "4") {
+        if ($request->input('categoria') == "4" or $request->input('categoria') == "Máquina") {
             $tipoChamado = "Hardware";
-            $subCategoria = "Máquina";
+            $categoria = "Máquina";
         }
 
         //atendente
@@ -88,12 +88,12 @@ class ChamadoController extends Controller
         Chamado::create([
             'tipo' => $tipoChamado,
             'categoria' => $request->input('categoria'),
-            'subcategoria' => $subCategoria,
+            'subcategoria' => $request->input('subcategoria'),
             'prioridade' => $request->input('prioridade'),
             'titulo' => $request->input('titulo'),
             'descricao' => $request->input('descricao'),
             //'atendente' => $atendente,
-            'setor'=> auth()->user()->type,
+            'setor'=> $request->input('setor'),
             'fkUsuario' => $idUsuario
         ]);
         $tipoUsuario = auth()->user()->type;
@@ -113,20 +113,20 @@ class ChamadoController extends Controller
     {
         //$idUsuario = auth()->user()->id;
         //tipo de chamado
-
-        if ($request->input('categoria') == "1" or "Sistemas") {
+       
+        if ($request->input('categoria') == '1' or $request->input('categoria') == 'Sistemas') {
             $tipoChamado = "Software";
             $categoria = "Sistemas";
         }
-        if ($request->input('categoria') == "2" or "Impressoras") {
+        if ($request->input('categoria') == "2" or $request->input('categoria') == "Impressoras") {
             $tipoChamado = "Hardware";
             $categoria = "Impressoras";
         }
-        if ($request->input('categoria') == "3" or "Telefonia") {
+        if ($request->input('categoria') == "3" or $request->input('categoria') == "Telefonia") {
             $tipoChamado = "Hardware";
             $categoria = "Telefonia";
         }
-        if ($request->input('categoria') == "4" or "Máquina") {
+        if ($request->input('categoria') == "4" or $request->input('categoria') == "Máquina") {
             $tipoChamado = "Hardware";
             $categoria = "Máquina";
         }

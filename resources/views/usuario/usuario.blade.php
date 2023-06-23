@@ -36,7 +36,7 @@
                         <div class="col-md-6 mb-3">
                             <!-- Input type text -->
                             <label for="senha">Senha</label>
-                            <input type="text" class="form-control" name="password" id="senha" value="{{optional($usuario)['password']}}">
+                            <input type="text" class="form-control" name="password" id="senha" value="">
                         </div>
                     </div>
                 </div>

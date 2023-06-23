@@ -77,7 +77,6 @@ class UsuarioController extends Controller
 
     public function update(Request $request, $idUsuario)
     {
-        //
         $tipoUsuario = auth()->user()->type;
         if (auth()->user()->type == "atendente" or  auth()->user()->type == "solicitante") {
             if (auth()->user()->id != $idUsuario) {
@@ -98,11 +97,14 @@ class UsuarioController extends Controller
             $tipoUsuario = $request->input('type');
         }
 
+
         $usuario = User::findOrFail($idUsuario);
         $usuario->name = $request->input('name');
         $usuario->email = $request->input('email');
         $usuario->username = $request->input('username');
-        $usuario->password = Hash::make($request->input('password'));
+        if($request->input('password')) {
+            $usuario->password = Hash::make($request->input('password'));
+        }
         $usuario->type =  $tipoUsuario;
         $usuario->setor = $request->input('setor');
         $usuario->ramal = $request->input('ramal');
@@ -112,7 +114,7 @@ class UsuarioController extends Controller
         if ($tipoUsuario != 'adm') {
             return redirect($tipoUsuario . '/usuario' . '/' . auth()->user()->id);
         }
-        return redirect()->route($tipoUsuario . '/usuarios');
+        return redirect($tipoUsuario . '/usuarios');
     }
 
     public function delete($idUsuario)

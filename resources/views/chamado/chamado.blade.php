@@ -4,7 +4,6 @@
 <!--Biblioteca do Jquery-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<div class="d-flex align-items-center justify-content-center" style="padding-left:70px">
     <div class="card w-75">
         <div class="card-header"><b>Novo chamado</b></div>
 
@@ -38,8 +37,8 @@
                             <!-- select -->
                             <label for="select_id_8">Prioridade*</label>
                             <select class="form-control custom-select" name="prioridade" id="select_id_8">
-                                <option value="{{optional($chamado)['prioridade']}}">{{optional($chamado)['prioridade']}}</option>
-                                <option value="Normal" selected>Normal</option>
+                                <option value="{{optional($chamado)['prioridade']}}" selected>{{optional($chamado)['prioridade']}}</option>
+                                <option value="Normal">Normal</option>
                                 <option value="Média">Média</option>
                                 <option value="Alta">Alta</option>
                             </select>
@@ -55,7 +54,7 @@
                     </div>
                     <div class="col-md-4 mb-3" style="display:flex; flex-direction:column;">
                         <!-- select -->
-                        <label for="tipo">Setor de Atendimento*</label>
+                        <label for="setor">Setor de Atendimento*</label>
                         <select class="form-select" aria-label="Default select example" name="setor">
                             <option selected>{{auth()->user()->setor}}</option>
                             <option value="Atendimento">Atendimento</option>
@@ -115,7 +114,7 @@
             </form>
         </div>
     </div>
-</div>
+
 
 <script>
     $(document).ready(function() {

@@ -16,25 +16,7 @@ class ChamadoController extends Controller
 
     public function index(Request $request)
     {
-        //$idUsuario = auth()->user()->id;
-        /*
-        $chamados = DB::table('chamado')
-        ->select('id','setor', 'tipo', 'categoria', 'subcategoria', 'titulo', 'prioridade', 'descricao', 'atendente', 'status', DB::raw('
-            CASE
-                WHEN TIMESTAMPDIFF(HOUR, criadoDataHora, concluidoDataHora) >= 24 THEN
-                    CONCAT(TIMESTAMPDIFF(DAY, criadoDataHora, concluidoDataHora),
-                    CASE
-                        WHEN TIMESTAMPDIFF(DAY, criadoDataHora, concluidoDataHora) > 1 THEN " Dias"
-                        ELSE " Dia"
-                    END)
-                ELSE
-                    CONCAT(TIMESTAMPDIFF(HOUR, criadoDataHora, concluidoDataHora),
-                    CASE
-                        WHEN TIMESTAMPDIFF(HOUR, criadoDataHora, concluidoDataHora) != 1 THEN " Horas"
-                        ELSE " Hora"
-                    END)
-            END AS tempo'))
-        ->get();*/
+
         $chamados = DB::table('chamado')->get();
         $chamados = json_decode($chamados, true);
 
@@ -50,18 +32,12 @@ class ChamadoController extends Controller
         ]);
     }
 
-    /*
-    public function create()
-    {
-        $type = auth()->user()->type;
-        return view("$type.chamado.criar");
-    }*/
-
     public function store(Request $request)
     {
+
+
         //id do usuário
         $idUsuario = auth()->user()->id;
-
         //tipo de chamado
         if ($request->input('categoria') == "1" or $request->input('categoria') == "Sistemas") {
             $tipoChamado = "Software";
@@ -83,17 +59,19 @@ class ChamadoController extends Controller
         //atendente
         if (auth()->user()->type == "atendente") {
             $atendente = auth()->user()->username;
+        } else {
+            $atendente = NULL;
         }
-        
+
         Chamado::create([
             'tipo' => $tipoChamado,
-            'categoria' => $request->input('categoria'),
+            'categoria' => $categoria,
             'subcategoria' => $request->input('subcategoria'),
             'prioridade' => $request->input('prioridade'),
             'titulo' => $request->input('titulo'),
             'descricao' => $request->input('descricao'),
-            //'atendente' => $atendente,
-            'setor'=> $request->input('setor'),
+            'atendente' => $atendente,
+            'setor' => $request->input('setor'),
             'fkUsuario' => $idUsuario
         ]);
         $tipoUsuario = auth()->user()->type;
@@ -102,7 +80,15 @@ class ChamadoController extends Controller
 
     public function edit($idChamado)
     {
+        $tipoUsuario = auth()->user()->type;
         $chamado = Chamado::findOrFail($idChamado);
+        $idUsuarioChamado = $chamado['fkUsuario'];
+
+        if (auth()->user()->type != "atendente" or auth()->user()->type != "adm") {
+            if (auth()->user()->id != $idUsuarioChamado) {
+                return redirect($tipoUsuario . '/chamado' . '/' . auth()->user()->id);
+            }
+        }
 
         return view('chamado.chamado', [
             'chamado' => Chamado::findOrFail($idChamado)
@@ -113,7 +99,16 @@ class ChamadoController extends Controller
     {
         //$idUsuario = auth()->user()->id;
         //tipo de chamado
-       
+        $tipoUsuario = auth()->user()->type;
+        $chamado = Chamado::findOrFail($idChamado);
+        $idUsuarioChamado = $chamado['fkUsuario'];
+
+        if (auth()->user()->type != "atendente" or auth()->user()->type != "adm") {
+            if (auth()->user()->id != $idUsuarioChamado) {
+                return redirect($tipoUsuario . '/chamado' . '/' . auth()->user()->id);
+            }
+        }
+
         if ($request->input('categoria') == '1' or $request->input('categoria') == 'Sistemas') {
             $tipoChamado = "Software";
             $categoria = "Sistemas";
@@ -131,8 +126,8 @@ class ChamadoController extends Controller
             $categoria = "Máquina";
         }
 
-        $chamado = Chamado::findOrFail($idChamado);
         $chamado->tipo = $tipoChamado;
+        $chamado->setor = $request->input('setor');
         $chamado->categoria = $categoria;
         $chamado->subcategoria = $request->input('subcategoria');
         $chamado->prioridade = $request->input('prioridade');
@@ -140,7 +135,7 @@ class ChamadoController extends Controller
         $chamado->descricao = $request->input('descricao');
         $chamado->status = $request->input('status');
         $chamado->update();
-        $tipoUsuario = auth()->user()->type;
-        return redirect($tipoUsuario . '/chamado/' . $idChamado);
+
+        return redirect($tipoUsuario . '/chamado'.'/' . $idChamado);
     }
 }

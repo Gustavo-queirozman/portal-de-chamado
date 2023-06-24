@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <title>Chamado</title>
+</head>
+
+<body class="p-0px m-0px">
+    <div class="flex">
+        <!--MENU DESKTOP-->
+        <div class="flex column justify-center"
+            style="background-color: green; color:white;">
+            <img src="../img/home-branco.png" alt="inicio"
+                style="width:35px; margin-top:7px; margin-bottom:7px; padding:5px;">
+            <img src="../img/perfil-branco.png" alt="usuário"
+                style="width:35px; margin-top:7px; margin-bottom:7px; padding:5px;">
+            <img src="../img/chamado-branco.png" alt="usuário"
+                style="width:35px; margin-top:7px; margin-bottom:7px; padding:5px;">
+            <img src="../img/sair-branco.png" alt="usuário"
+                style="width:35px; margin-top:7px; margin-bottom:7px; padding:5px;">
+        </div>
+
+        <div style="width: 100%;">
+            <header class="flex wrap align-center justify-center"
+                style="width: 100%; box-sizing:border-box; padding:20px 20px; background-color: white; box-shadow: 0 1px 25px rgba(0,0,0,.16);">
+                <br>
+                <input type="text" placeholder="Número chamado">
+                <select name="chamado" style="height: 30px;">
+                    <option value>Número do chamado</option>
+                    <option value="hardware">Hardware</option>
+                    <option value="software">Software</option>
+                </select>
+                <input type="date">
+                <input type="date">
+                <input type="submit" value="Pesquisar">
+            </header>
+
+            <div class="flex wrap align-center justify-center" style="width: 100%; height:100vh;">
+                <div class="container">
+                    <h2>Novo chamado</h2>
+                    <form action method="POST">
+                        <div class="flex row-column">
+                            <div class="flex column">
+                                <span>Categoria*</span>
+                                <input type="text">
+                            </div>
+                            <div class="flex column">
+                                <span>Subcategoria*</span>
+                                <input type="text">
+                            </div>
+                            <div class="flex column">
+                                <span>Prioridade*</span>
+                                <select name="prioridade" id>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Média">Média</option>
+                                    <option value="Alta">Alta</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex column">
+                            <div class="flex column">
+                                <span>Título*</span>
+                                <input type="text">
+                            </div>
+                            <div class="flex column">
+                                <span>Descrição</span>
+                                <textarea type="text"></textarea>
+                            </div>
+                        </div>
+                        <div class="flex row-column">
+                            <div class="flex column">
+                                <span>Status*</span>
+                                <input type="text">
+                            </div>
+                            <div class="flex column">
+                                <span>Criado</span>
+                                <input type="date">
+                            </div>
+                            <div class="flex column">
+                                <span>Concluído</span>
+                                <input type="date">
+                            </div>
+                        </div>
+                        <input type="submit" value="Salvar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+
+    </style>
+</body>
+</html>

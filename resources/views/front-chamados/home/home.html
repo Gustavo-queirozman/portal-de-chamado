@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <title>Página Inicial</title>
+</head>
+<body class="p-0px m-0px">
+    <div class="flex">   
+        <!--MENU DESKTOP-->
+        <div class="flex column justify-center"
+            style="background-color: green; color:white;">
+            <img src="../img/home-branco.png" alt="inicio" style="width:35px; margin-top:7px; margin-bottom:7px; padding:5px;">
+            <img src="../img/perfil-branco.png" alt="usuário"style="width:35px; margin-top:7px; margin-bottom:7px; padding:5px;">
+            <img src="../img/chamado-branco.png" alt="usuário"style="width:35px; margin-top:7px; margin-bottom:7px; padding:5px;">
+            <img src="../img/sair-branco.png" alt="usuário"style="width:35px; margin-top:7px; margin-bottom:7px; padding:5px;">
+        </div>
+      
+        <div style="width: 100%;">
+            <header class="flex wrap align-center justify-center" style="width: 100%; box-sizing:border-box; padding:20px 20px; background-color: white; box-shadow: 0 1px 25px rgba(0,0,0,.16);">
+                <input type="text" placeholder="Número chamado">
+                <select name="chamado">
+                    <option value>Número do chamado</option>
+                    <option value="hardware">Hardware</option>
+                    <option value="software">Software</option>
+                </select>
+                <input type="date">
+                <input type="date">
+                <input type="submit" value="Pesquisar">
+            </header>
+
+            <div class="flex wrap align-center justify-center" style="width: 100%; height:100vh;">
+                <div class="flex align-center column bc-white" style="height: 100px; width: 100px; margin: 5px;">
+                    <img src="../img/usuarios-verde.png" alt="Usuários">
+                    <strong class="text-center">Usuários</strong>
+                </div>
+                <div class="flex align-center column bc-white" 
+                    style="height: 100px; width: 100px; margin: 5px;">
+                    <img src="../img/novo-chamado.png" alt="Criar chamado">
+                    <strong class="text-center">Criar chamado</strong>
+                </div>
+                <div class="flex align-center column bc-white" 
+                    style="height: 100px; width: 100px; margin: 5px;">
+                    <img src="../img/lista-chamado-verde.png" alt="Lista de chamados">
+                    <strong class="text-center">Chamados</strong>
+                </div>
+                <div class="flex align-center column bc-white" 
+                    style="height: 100px; width: 100px; margin: 5px;">
+                    <img src="../img/gestao-verde.png" alt="Gestão">
+                    <strong class=" text-center">Gestão</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var menuButton = document.getElementById('menu-button');
+        var menu = document.getElementById('menu');
+
+        menuButton.addEventListener('click', function() {
+            menu.classList.toggle('open'); /* Alternar a classe "open" no menu */
+        });
+    });
+</script>
+</body>
+</html>
